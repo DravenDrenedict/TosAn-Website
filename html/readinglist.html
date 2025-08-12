@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading List App</title>
+  <link rel="stylesheet" href="/src/output.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .book-stack {
+      position: relative;
+      width: 64px;
+      height: 80px;
+      margin: 0 auto;
+    }
+
+    .book {
+      position: absolute;
+      width: 64px;
+      height: 80px;
+      border-radius: 6px;
+    }
+
+    .book-1 {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      transform: rotate(3deg);
+      z-index: 1;
+    }
+
+    .book-2 {
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      transform: rotate(-2deg) translateX(8px);
+      z-index: 2;
+    }
+
+    .book-3 {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      transform: rotate(1deg) translateX(16px);
+      z-index: 3;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+  <!-- Top Header Bar -->
+  <div class="w-full p-4 shadow-sm" style="background-color: #803030;" data-aos="fade-up-left">
+    <div class="flex  justify-between max-w-full mx-auto">
+      <div class="flex items-center gap-4">
+        <a href="../index.html">
+          <button class="text-white hover:text-white/80 transition-colors flex items-center">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-6 h-6 mr-2" fill="currentColor">
+                <path
+                  d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z" />
+              </svg>
+            </span>
+            <span>Back</span>
+          </button>
+        </a>
+      </div>
+
+      <h1 class="text-white text-xl font-semibold">Reading lists</h1>
+      <a href="../html/new-list.html">
+        <button
+        class="text-white border border-white/30 rounded-lg px-4 py-2 hover:bg-white/10 transition-colors flex items-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Add List
+      </button>
+      </a>
+    </div>
+  </div>
+
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="w-80 p-6">
+      <!-- Floating Card -->
+      <div class="rounded-3xl p-6 shadow-lg" style="background-color: #803030;" data-aos="flip-left">
+        <h1 class="text-white text-2xl font-bold mb-8">My Lists</h1>
+
+        <div class="space-y-4" data-aos="flip-up" data-aos-delay="200">
+          <button onclick="showPage('currentlyReading')" id="btn-currentlyReading"
+            class="w-full p-4 rounded-xl border transition-all duration-200 text-white"
+            style="background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);">
+            <div class="text-left">
+              <div class="font-medium text-lg">Currently Reading</div>
+              <div class="text-sm opacity-80" id="count-currentlyReading">0 books</div>
+            </div>
+          </button>
+
+          <button onclick="showPage('wantToRead')" id="btn-wantToRead"
+            class="w-full p-4 rounded-xl border transition-all duration-200 text-white/70 hover:text-white"
+            style="background-color: transparent; border-color: rgba(255,255,255,0.2);">
+            <div class="text-left">
+              <div class="font-medium text-lg">Want to Read</div>
+              <div class="text-sm opacity-80" id="count-wantToRead">0 books</div>
+            </div>
+          </button>
+
+          <button onclick="showPage('completed')" id="btn-completed"
+            class="w-full p-4 rounded-xl border transition-all duration-200 text-white/70 hover:text-white"
+            style="background-color: transparent; border-color: rgba(255,255,255,0.2);">
+            <div class="text-left">
+              <div class="font-medium text-lg">Complete</div>
+              <div class="text-sm opacity-80" id="count-completed">0 books</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8" data-aos="flip-down">
+          <h2 id="page-title" class="text-4xl font-bold text-gray-900 mb-2">Currently Reading</h2>
+          <p id="page-subtitle" class="text-gray-600 text-lg mb-6">Book I'm actively reading</p>
+
+          <div class="flex items-center gap-4">
+            <div class="bg-white border border-gray-300 rounded-full px-4 py-2 text-gray-700" id="book-count">
+              0 Books
+            </div>
+            <div class="bg-white border border-gray-300 rounded-full px-4 py-2 text-gray-700 flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Create <span id="current-date"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="text-center py-20" data-aos="fade-up-left">
+          <div class="mb-8 flex justify-center">
+            <div class="book-stack">
+              <img src="https://png.pngtree.com/png-vector/20231214/ourmid/pngtree-hand-drawn-graphic-design-book-stack-png-image_11341299.png" alt="" class="h-30 w-40">
+              <!-- <div class="book book-1"></div>
+              <div class="book book-2"></div>
+              <div class="book book-3"></div> -->
+            </div>
+          </div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">No books in this list</h3>
+          <p class="text-gray-600 mb-8 text-lg">Start adding books track your reading progress</p>
+
+          <a href="../index.html">
+            <button
+            class="px-8 py-3 rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-white"
+            style="background-color: #803030;" onmouseover="this.style.backgroundColor='#703030'"
+            onmouseout="this.style.backgroundColor='#803030'">
+            Browse Books
+          </button>
+          </a>
+        </div>
+
+        <!-- Books Grid (hidden initially) -->
+        <div id="books-grid" class=" grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 hidden">
+          <!-- Books will be added here dynamically -->
+        </div>
+
+        <!-- Add Book Button (floating) -->
+        <button
+          class="fixed bottom-8 right-8 p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-1 text-white"
+          style="background-color: #803030;" onmouseover="this.style.backgroundColor='#703030'"
+          onmouseout="this.style.backgroundColor='#803030'">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+    <!-- Enhanced Logo Section - Copy this part -->
+    <footer class="text-white" style="background-color: #803030;">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                
+                <!-- Enhanced Logo Section -->
+                <div class="lg:col-span-1 flex flex-col items-center lg:items-start justify-center">
+                    <div class="enhanced-logo-container">
+                        <img src="/images/TOSANLOGO.png" alt="TOSAN Logo" class="enhanced-logo">
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">EXPLORE</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Admission</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Short Course</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Scholarship</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">News & Events</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Learning Portal</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Apply Now</a></li>
+                    </ul>
+                </div>
+
+                <!-- Address and Contacts -->
+                <div class="lg:col-span-1">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">ADDRESS</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            No. 24, Street 562, Sangkat Boeung<br>
+                            Kak I, Khan Toul Kork, Phnom Penh,<br>
+                            Cambodia
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-white">CONTACTS</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-gray-300 mr-3"></i>
+                                <a href="mailto:info.istad@gmail.com" class="text-gray-200 hover:text-white">info.istad@gmail.com</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 95-990-910</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 93-990-910</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                                <i class="fab fa-youtube text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <i class="fab fa-telegram text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                <i class="fab fa-tiktok text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni and App Section -->
+                <div class="lg:col-span-1">
+                    <!-- Visit Alumni Site -->
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-user-graduate text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">VISIT ALUMNI SITE</h3>
+                                <a href="#" class="text-gray-200 hover:text-white">Alumni Application</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CSTAD APP -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">CSTAD APP</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-apple text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">Download on the</p>
+                                        <p class="text-white font-semibold">App Store</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-google-play text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">GET IT ON</p>
+                                        <p class="text-white font-semibold">Google Play</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow Us Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">Follow Us</h3>
+                    <div class="bg-white rounded-lg p-2 h-32">
+                        <img src="../images/facebook.png" alt="">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-red-400 border-opacity-30">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <p class="text-center text-gray-200">
+                    © 2024 Center of Science and Technology Advanced Development | All Rights Reserved
+                </p>
+            </div>
+        </div>
+
+        <!-- Floating Chat Button -->
+        <div class="fixed bottom-6 right-6">
+            <button class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors">
+                <i class="fas fa-comments text-white text-xl"></i>
+            </button>
+        </div>
+    </footer>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+<style>
+      .enhanced-logo-container {
+        position: relative;
+        display: inline-block;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      
+      .enhanced-logo-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(255,255,255,0.2);
+      }
+      
+      .enhanced-logo-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(255,215,0,0.2) 0%, transparent 50%, rgba(59,130,246,0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 20px;
+      }
+      
+      .enhanced-logo-container:hover::before {
+        opacity: 1;
+      }
+      
+      .enhanced-logo {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .enhanced-logo-container:hover .enhanced-logo {
+        transform: scale(1.1);
+      }
+      
+      @media (min-width: 1024px) {
+        .enhanced-logo {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    </style>
+
+  <script>
+    // Data storage
+    let books = {
+      currentlyReading: [],
+      wantToRead: [],
+      completed: []
+    };
+
+    let currentPage = 'currentlyReading';
+
+    // Page configurations
+    const pageConfig = {
+      currentlyReading: {
+        title: 'Currently Reading',
+        subtitle: "Book I'm actively reading"
+      },
+      wantToRead: {
+        title: 'Want to Read',
+        subtitle: 'Books I plan to read'
+      },
+      completed: {
+        title: 'Complete',
+        subtitle: 'Books I have finished reading'
+      }
+    };
+
+    // Initialize the app
+    function init() {
+      updateDate();
+      showPage('currentlyReading');
+    }
+
+    // Update current date
+    function updateDate() {
+      const now = new Date();
+      const dateStr = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
+      document.getElementById('current-date').textContent = dateStr;
+    }
+
+    // Show specific page
+    function showPage(page) {
+      currentPage = page;
+
+      // Update active button
+      document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+        btn.className = 'w-full p-4 rounded-xl border transition-all duration-200 text-white/70 hover:text-white';
+        btn.style.backgroundColor = 'transparent';
+        btn.style.borderColor = 'rgba(255,255,255,0.2)';
+      });
+
+      const activeBtn = document.getElementById(`btn-${page}`);
+      activeBtn.className = 'w-full p-4 rounded-xl border transition-all duration-200 text-white';
+      activeBtn.style.backgroundColor = 'rgba(255,255,255,0.1)';
+      activeBtn.style.borderColor = 'rgba(255,255,255,0.3)';
+
+      // Update page content
+      const config = pageConfig[page];
+      document.getElementById('page-title').textContent = config.title;
+      document.getElementById('page-subtitle').textContent = config.subtitle;
+
+      // Update book count
+      const count = books[page].length;
+      document.getElementById('book-count').textContent = `${count} Book${count !== 1 ? 's' : ''}`;
+
+      // Show/hide content based on whether there are books
+      if (count === 0) {
+        document.getElementById('empty-state').classList.remove('hidden');
+        document.getElementById('books-grid').classList.add('hidden');
+      } else {
+        document.getElementById('empty-state').classList.add('hidden');
+        document.getElementById('books-grid').classList.remove('hidden');
+        renderBooks();
+      }
+    }
+
+    // Update sidebar counts
+    function updateCounts() {
+      Object.keys(books).forEach(category => {
+        const count = books[category].length;
+        document.getElementById(`count-${category}`).textContent = `${count} book${count !== 1 ? 's' : ''}`;
+      });
+    }
+
+    // Render books in the grid
+    function renderBooks() {
+      const grid = document.getElementById('books-grid');
+      const currentBooks = books[currentPage];
+
+      grid.innerHTML = currentBooks.map(book => `
+                <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 p-6">
+                    <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
+                        ${book.cover ?
+          `<img src="${book.cover}" alt="${book.title}" class="w-full h-full object-cover rounded-lg">` :
+          `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>`
+        }
+                    </div>
+                    <h4 class="font-bold text-gray-900 mb-2 line-clamp-2">${book.title}</h4>
+                    <p class="text-gray-600 text-sm">${book.author}</p>
+                </div>
+            `).join('');
+    }
+
+    // Initialize when page loads
+    window.onload = init;
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init();
+  </script>
+</body>
+
+</html>

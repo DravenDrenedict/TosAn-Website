@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Categories</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/src/output.css">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    .category-btn.active {
+      background-color: #783232;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+</head>
+
+<body class="bg-white text-gray-800">
+
+
+  <nav class="bg-[#803030] text-white p-4 sticky top-0 z-50">
+    <div class="flex justify-between items-center">
+      <a href="../index.html"><button onclick="goBack()" class="text-sm">&larr; Back</button></a>
+      <h1 class="text-lg font-semibold">Book Categories</h1>
+      <div class="relative">
+        <button class="text-sm" onclick="showFavorites()">
+          <span><i class="fas fa-heart text-xl"></i></span> Favorite (<span id="favCount">0</span>)
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Main Content -->
+  <main class="flex flex-col  md:flex-col lg:flex-row  p-4 gap-6" data-aos="flip-left">
+    <!-- Sidebar -->
+    <aside class="w-full sm:w-full lg:w-1/6 ml-0 lg:ml-[60px] mt-4 sm:mt-6 lg:mt-[60px]" data-aos="flip-left">
+      <div class="bg-[#4d1d1d] text-white p-4 sm:p-5 lg:p-6 rounded-lg">
+        <h2 class="font-bold text-lg mb-3">Categories</h2>
+        <ul class="space-y-2">
+          <li>
+            <button class="category-btn w-full text-left px-3 py-2 rounded active"
+              onclick="filterBooks('Fantasy', this)">
+              Fantasy
+            </button>
+          </li>
+          <li>
+            <button class="category-btn w-full text-left px-3 py-2 rounded hover:bg-[#783232]"
+              onclick="filterBooks('Horror', this)">
+              Horror
+            </button>
+          </li>
+          <li>
+            <button class="category-btn w-full text-left px-3 py-2 rounded hover:bg-[#783232]"
+              onclick="filterBooks('Romance', this)">
+              Romance
+            </button>
+          </li>
+          <li>
+            <button class="category-btn w-full text-left px-3 py-2 rounded hover:bg-[#783232]"
+              onclick="filterBooks('Sci-Fi', this)">
+              Science fiction
+            </button>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Book Grid -->
+    <section class="flex-1 ">
+      <h2 id="categoryTitle" class="text-xl font-bold mb-2 text-center p-4">Fantasy</h2>
+      <p id="categoryDescription" class="text-sm text-gray-600 mb-4 text-center">
+        Discover amazing fantasy books
+      </p>
+      <div id="bookGrid" class="grid grid-cols-1 sm:grid-cols-2   lg:grid-cols-3  gap-6 m-[60px]">
+        <!-- Book cards inserted here via JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+    <!-- Enhanced Logo Section - Copy this part -->
+    <footer class="text-white" style="background-color: #803030;">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                
+                <!-- Enhanced Logo Section -->
+                <div class="lg:col-span-1 flex flex-col items-center lg:items-start justify-center">
+                    <div class="enhanced-logo-container">
+                        <img src="/images/TOSANLOGO.png" alt="TOSAN Logo" class="enhanced-logo">
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">EXPLORE</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Admission</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Short Course</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Scholarship</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">News & Events</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Learning Portal</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Apply Now</a></li>
+                    </ul>
+                </div>
+
+                <!-- Address and Contacts -->
+                <div class="lg:col-span-1">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">ADDRESS</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            No. 24, Street 562, Sangkat Boeung<br>
+                            Kak I, Khan Toul Kork, Phnom Penh,<br>
+                            Cambodia
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-white">CONTACTS</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-gray-300 mr-3"></i>
+                                <a href="mailto:info.istad@gmail.com" class="text-gray-200 hover:text-white">info.istad@gmail.com</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 95-990-910</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 93-990-910</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                                <i class="fab fa-youtube text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <i class="fab fa-telegram text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                <i class="fab fa-tiktok text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni and App Section -->
+                <div class="lg:col-span-1">
+                    <!-- Visit Alumni Site -->
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-user-graduate text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">VISIT ALUMNI SITE</h3>
+                                <a href="#" class="text-gray-200 hover:text-white">Alumni Application</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CSTAD APP -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">CSTAD APP</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-apple text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">Download on the</p>
+                                        <p class="text-white font-semibold">App Store</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-google-play text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">GET IT ON</p>
+                                        <p class="text-white font-semibold">Google Play</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow Us Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">Follow Us</h3>
+                    <div class="bg-white rounded-lg p-2 h-32">
+                        <img src="../images/facebook.png" alt="">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-red-400 border-opacity-30">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <p class="text-center text-gray-200">
+                    © 2024 Center of Science and Technology Advanced Development | All Rights Reserved
+                </p>
+            </div>
+        </div>
+
+        <!-- Floating Chat Button -->
+        <div class="fixed bottom-6 right-6">
+            <button class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors">
+                <i class="fas fa-comments text-white text-xl"></i>
+            </button>
+        </div>
+    </footer>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+<style>
+      .enhanced-logo-container {
+        position: relative;
+        display: inline-block;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      
+      .enhanced-logo-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(255,255,255,0.2);
+      }
+      
+      .enhanced-logo-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(255,215,0,0.2) 0%, transparent 50%, rgba(59,130,246,0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 20px;
+      }
+      
+      .enhanced-logo-container:hover::before {
+        opacity: 1;
+      }
+      
+      .enhanced-logo {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .enhanced-logo-container:hover .enhanced-logo {
+        transform: scale(1.1);
+      }
+      
+      @media (min-width: 1024px) {
+        .enhanced-logo {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    </style>
+
+  <!-- JavaScript -->
+  <script>
+    const books = [
+      {
+        title: "Earth's Daughter",
+        description: "only one thing sweeter ",
+        image: "../images/categories/1.jpg",
+        category: "Fantasy",
+        bookLink: ".../html/detail/fantasy1.html"
+      },
+      {
+        title: "Reign of Star",
+        description: "Star with the darkness ",
+        image: "../images/categories/2.jpg",
+        category: "Fantasy",
+      },
+      {
+        title: "Amber Crown",
+        description: "Amber Crown begins",
+        image: "../images/categories/3.jpg",
+        category: "Fantasy",
+      },
+      {
+        title: "Creature",
+        description: "Magnificent Book of",
+        image: "../images/categories/4.jpg",
+        category: "Fantasy",
+      },
+      {
+        title: "Bound Inked",
+        description: "The Crowns And Thorns",
+        image: "../images/categories/5.jpg",
+        category: "Fantasy",
+      },
+      {
+        title: "Adam Roberts",
+        description: "Adam Roberts Traces ",
+        image: "../images/categories/6.jpg",
+        category: "Fantasy",
+      },
+      {
+        title: "Tangent",
+        description: "As a princess in the ",
+        image: "../images/categories/7.jpg",
+        category: "Fantasy",
+      },
+      {
+        title: "Reign of Star",
+        description: "An epic saga of rebellion ",
+        image: "../images/categories/8.jpg",
+        category: "Fantasy",
+      },
+      {
+        title: "Legend Bear",
+        description: "A tale of mysterious .",
+        image: "../images/categories/9.jpg",
+        category: "Fantasy",
+      },
+      {
+        title: "Dracula",
+        description: "Dracula is more than  ",
+        image: "../images/categories/10.jpg",
+        category: "Horror",
+      },
+      {
+        title: "The Strange Case ",
+        description: "A brilliant doctor, a horrifying   ",
+        image: "../images/categories/11.jpg",
+        category: "Horror",
+      },
+      {
+        title: " The Phantom ",
+        description: " A masked phantom, a rising  ",
+        image: "../images/categories/12.jpg",
+        category: "Horror",
+      },
+      {
+        title: " Dorian Gray",
+        description: " young man, a cursed portrait  ",
+        image: "../images/categories/13.jpg",
+        category: "Horror",
+      },
+      {
+        title: "The Shadows",
+        description: "A hidden cult, a monstrous god  ",
+        image: "../images/categories/14.jpg",
+        category: "Horror",
+      },
+      {
+        title: " The Call of Cthulhu ",
+        description: "A hidden cult, a monstrous god   ",
+        image: "../images/categories/15.jpg",
+        category: "Horror",
+      },
+      {
+        title: "Morella",
+        description: " A mysterious woman, an ominous love ",
+        image: "../images/categories/16.jpg",
+        category: "Horror",
+      },
+      {
+        title: "The Canterville Ghost ",
+        description: "A haunted mansion, a frustrated ghost ",
+        image: "../images/categories/17.jpg",
+        category: "Horror",
+      },
+      {
+        title: " Frankenstein ",
+        description: "A brilliant scientist, a tragic creation  ",
+        image: "../images/categories/18.jpg",
+        category: "Horror",
+      },
+
+      // New Romance books
+      {
+        title: "Pride and Prejudice",
+        description: "Classic tale of love...",
+        image: "../images/categories/rom1.jpg",
+        category: "Romance",
+      },
+      {
+        title: "The Notebook",
+        description: "A lifelong love story filled with...",
+        image: "../images/categories/rom2.jpg",
+        category: "Romance",
+      },
+      {
+        title: "Me Before You",
+        description: "A heartbreaking romantic...",
+        image: "../images/categories/rom3.jpg",
+        category: "Romance",
+      },
+      {
+        title: "The Fault in Our Stars",
+        description: "Two teens fall in love despite all. ",
+        image: "../images/categories/rom4.png",
+        category: "Romance",
+      },
+      {
+        title: "To All the Boys",
+        description: "A secret letter, a fake romance.",
+        image: "../images/categories/rom5.jpg",
+        category: "Romance",
+      },
+      {
+        title: "The Time Traveler's Wife",
+        description: "A timeless love that defies.",
+        image: "../images/categories/rom6.jpg",
+        category: "Romance",
+      },
+      {
+        title: "It Ends With Us",
+        description: "A story of love, streng...",
+        image: "../images/categories/rom7.jpg",
+        category: "Romance",
+      },
+      {
+        title: "Beautiful Disaster",
+        description: "Two opposites drawn together.",
+        image: "../images/categories/rom8.jpg",
+        category: "Romance",
+      },
+      {
+        title: "The Rogue Heiress",
+        description: "About period costumes and...",
+        image: "../images/categories/rom9",
+        category: "Romance",
+      },
+      {
+        title: "Dune",
+        description: "A desert planet holds the power.",
+        image: "../images/categories/scifi1.jpg",
+        category: "Sci-Fi",
+      },
+      {
+        title: "Neuromancer",
+        description: "A cyberpunk classic of AI .",
+        image: "../images/categories/scifi2.jpg",
+        category: "Sci-Fi",
+      },
+      {
+        title: "Foundation",
+        description: "The fall and rise of civilizations.",
+        image: "../images/categories/scifi3.jpg",
+        category: "Sci-Fi",
+      },
+      {
+        title: "Ender’s Game",
+        description: "Young genius trained to save.",
+        image: "../images/categories/scifi4.jpg",
+        category: "Sci-Fi",
+      },
+      {
+        title: "Snow Crash",
+        description: "Virtual reality and hacker.",
+        image: "../images/categories/scifi5.jpg",
+        category: "Sci-Fi",
+      },
+      {
+        title: "The Martian",
+        description: "An astronaut survives alone on .",
+        image: "../images/categories/scifi6.jpg",
+        category: "Sci-Fi",
+      },
+
+      {
+        title: "City of Stairs",
+        description: "In a city where gods once ruled.",
+        image: "../images/categories/scifi7.jpg",
+        category: "Sci-Fi",
+      },
+      {
+        title: "Echoes of Andromeda",
+        description: "An AI captain guides humanity’s.",
+        image: "../images/categories/scifi8.jpg",
+        category: "Sci-Fi",
+      },
+      {
+        title: "Neon Divide",
+        description: "A detective unravels a murder .",
+        image: "../images/categories/scifi9.jpg",
+        category: "Sci-Fi",
+      },
+    ];
+
+    const favSet = new Set();
+
+    function renderBooks(filtered = books) {
+      const grid = document.getElementById("bookGrid");
+      grid.innerHTML = "";
+      filtered.forEach((book, index) => {
+        const card = document.createElement("div");
+        card.className =
+          "transform hover:scale-105 transition duration-300 ease-in-out flex justify-center mb-[25px]";
+
+        // Determine the link based on the book category or index
+        let link = "";
+        switch (book.category) {
+          case "Fantasy":
+            link = `/html/detail/fantasy${index + 1}.html`;
+            break;
+          case "Horror":
+            link = `/html/detail/horror${index + 1}.html`;
+            break;
+          case "Romance":
+            link = `/html/detail/romance${index + 1}.html`;
+            break;
+          case "Sci-Fi":
+            link = `/html/detail/si-fi${index + 1}.html`;
+            break;
+          default:
+            link = "/html/detail/view-details.html"; // default case
+        }
+
+        // Create the anchor link
+        const bookLink = document.createElement("a");
+        bookLink.href = link;
+        bookLink.className = "w-full";
+
+        bookLink.innerHTML = `
+                <div class="relative shadow-lg rounded-lg overflow-hidden bg-white w-[270px] max-w-sm" style="height: 400px;">
+                    <img src="${book.image}" alt="${book.title}" class="w-full h-[320px] object-cover">
+                    <div onclick="toggleFavorite('${book.title}')" class="absolute top-2 right-2 rounded-3xl w-9 h-9 flex items-center justify-center cursor-pointer bg-red-600 bg-opacity-80 hover:bg-opacity-100 transition-colors duration-300">
+                    <span class="text-white text-lg">♥</span>
+                    </div>
+                    <div class="p-3">
+                    <h3 class="text-base font-semibold text-[#265073] text-center">${book.title}</h3>
+                    <p class="text-[15px] text-gray-500 mt-1 text-center">${book.description}</p>
+                    </div>
+                </div>
+                `;
+
+        card.appendChild(bookLink);  // Append the link to the card
+        grid.appendChild(card);
+      });
+    }
+
+    function filterBooks(category, el = null) {
+      document
+        .querySelectorAll(".category-btn")
+        .forEach((btn) => btn.classList.remove("active"));
+      if (el) el.classList.add("active");
+
+      const filtered = books.filter((book) => book.category === category);
+      document.getElementById("categoryTitle").textContent = category;
+
+      let description = `Explore a selection of ${category} books`;
+      if (category === "Fantasy") {
+        description = "Discover amazing fantasy books";
+      } else if (category === "Horror") {
+        description = "Discover bone-chilling horror books";
+      } else if (category === "Romance") {
+        description = "Dive into heartwarming romance stories";
+      } else if (category === "Sci-Fi") {
+        description = "Blast off with thrilling sci‑fi adventures";
+      }
+      document.getElementById("categoryDescription").textContent =
+        description;
+
+      renderBooks(filtered);
+    }
+
+    function toggleFavorite(title) {
+      favSet.has(title) ? favSet.delete(title) : favSet.add(title);
+      document.getElementById("favCount").textContent = favSet.size;
+      const activeBtn = document.querySelector(".category-btn.active");
+      filterBooks(activeBtn ? activeBtn.textContent : "Fantasy", activeBtn);
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    function showFavorites() {
+      document
+        .querySelectorAll(".category-btn")
+        .forEach((btn) => btn.classList.remove("active"));
+      const favBooks = books.filter((book) => favSet.has(book.title));
+      document.getElementById("categoryTitle").textContent = "Favorites";
+      document.getElementById("categoryDescription").textContent =
+        "Your collection of favorite books";
+      renderBooks(favBooks);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      filterBooks("Fantasy", document.querySelector(".category-btn"));
+    });
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>statistics</title>
+  <link rel="stylesheet" href="/src/output.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+</head>
+
+<body>
+  <nav class="bg-[#803030] text-white p-4 sticky top-0 z-50">
+    <div class="flex justify-between items-center">
+      <a href="../index.html">
+        <button class="text-sm">&larr; Back</button>
+      </a>
+      <h1 class="text-lg font-semibold">Statistics</h1>
+      <div class="relative">
+        <button class="text-sm">
+          <span><i class="fas fa-heart text-xl"></i></span>Favorite (<span id="favCount">0</span>)
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- header -->
+  <main class="m-[50px]">
+    <div>
+      <div>
+        <div class="flex  justify-center text-[75px] font-bold">
+          <h3>Your Reading Journey</h3>
+        </div>
+        <div class="flex  justify-center text-[25px] font-medium">
+          <p>Track your progress and celebrate your achievements</p>
+        </div>
+      </div>
+
+      <!-- grid 1 -->
+      <div data-aos-delay="200"
+        class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-[20px] mt-[30px]">
+        <!-- card 1 -->
+        <div data-aos="flip-left"
+          class=" sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 2xl:col-span-1 bg-[#803030] rounded-[10px] p-[20px]">
+          <div class="w-[40px] h-[40px] bg-blue-300 rounded-[10px] flex items-center text-white">
+            <svg class="fill-white w-[20px] h-[20px] mx-auto flex justify-center " xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontaweso me - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 325.3 448 312C448 298.7 437.3 288 424 288L248 288z" />
+            </svg>
+          </div>
+          <div class="text-white font-[20px] pt-[10px]">
+            <h4 class="font-bold pt-[10px]">Total Books</h4>
+            <p class="pt-[10px]">Books in your library</p>
+          </div>
+        </div>
+        <!-- card 2 -->
+        <div data-aos="flip-left"
+          class="sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 2xl:col-span-1 bg-[#803030] rounded-[10px] p-[20px]">
+          <div class="w-[40px] h-[40px] bg-green-300 rounded-[10px] flex items-center text-white">
+            <svg class="fill-white w-[20px] h-[20px] mx-auto flex justify-center " xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M320 205.3L320 514.6L320.5 514.4C375.1 491.7 433.7 480 492.8 480L512 480L512 160L492.8 160C450.6 160 408.7 168.4 369.7 184.6C352.9 191.6 336.3 198.5 320 205.3zM294.9 125.5L320 136L345.1 125.5C391.9 106 442.1 96 492.8 96L528 96C554.5 96 576 117.5 576 144L576 496C576 522.5 554.5 544 528 544L492.8 544C442.1 544 391.9 554 345.1 573.5L332.3 578.8C324.4 582.1 315.6 582.1 307.7 578.8L294.9 573.5C248.1 554 197.9 544 147.2 544L112 544C85.5 544 64 522.5 64 496L64 144C64 117.5 85.5 96 112 96L147.2 96C197.9 96 248.1 106 294.9 125.5z" />
+            </svg>
+          </div>
+          <div class="text-white font-[20px] pt-[10px]">
+            <h4 class="font-bold pt-[10px]">Books Read</h4>
+            <p class="pt-[10px]">Completed this year</p>
+          </div>
+        </div>
+        <!-- card 3 -->
+        <div data-aos="flip-left"
+          class="sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 2xl:col-span-1 bg-[#803030] rounded-[10px] p-[20px]">
+          <div class="w-[40px] h-[40px] bg-yellow-300 rounded-[10px] flex items-center">
+            <svg class="fill-white w-[20px] h-[20px] mx-auto flex justify-center " xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M528 320C528 434.9 434.9 528 320 528C205.1 528 112 434.9 112 320C112 205.1 205.1 112 320 112C434.9 112 528 205.1 528 320zM64 320C64 461.4 178.6 576 320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320zM296 184L296 320C296 328 300 335.5 306.7 340L402.7 404C413.7 411.4 428.6 408.4 436 397.3C443.4 386.2 440.4 371.4 429.3 364L344 307.2L344 184C344 170.7 333.3 160 320 160C306.7 160 296 170.7 296 184z" />
+            </svg>
+          </div>
+          <div class="text-white font-[20px] pt-[10px]">
+            <h4 class="font-bold pt-[10px]">Currently Reading</h4>
+            <p class="pt-[10px]">Books in your library</p>
+          </div>
+        </div>
+        <!-- card 4 -->
+        <div data-aos="flip-left"
+          class="sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 2xl:col-span-1 bg-[#803030] rounded-[10px] p-[20px]">
+          <div class="w-[40px] h-[40px] bg-violet-300 rounded-[10px] flex items-center">
+            <svg class="fill-white w-[20px] h-[20px] mx-auto flex justify-center " xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M512 320C512 214 426 128 320 128L320 512C426 512 512 426 512 320zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320z" />
+            </svg>
+          </div>
+          <div class="text-white font-[20px] pt-[10px]">
+            <h4 class="font-bold pt-[10px]">Want to Read</h4>
+            <p class="pt-[10px]">On your wishlist</p>
+          </div>
+        </div>
+        <!-- card 5 -->
+        <div data-aos="flip-left"
+          class="sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 2xl:col-span-1 bg-[#803030] rounded-[10px] p-[20px]">
+          <div class="w-[40px] h-[40px] bg-red-400 rounded-[10px] flex items-center">
+            <svg class="fill-white w-[20px] h-[20px] mx-auto flex justify-center " xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M442.9 144C415.6 144 389.9 157.1 373.9 179.2L339.5 226.8C335 233 327.8 236.7 320.1 236.7C312.4 236.7 305.2 233 300.7 226.8L266.3 179.2C250.3 157.1 224.6 144 197.3 144C150.3 144 112.2 182.1 112.2 229.1C112.2 279 144.2 327.5 180.3 371.4C221.4 421.4 271.7 465.4 306.2 491.7C309.4 494.1 314.1 495.9 320.2 495.9C326.3 495.9 331 494.1 334.2 491.7C368.7 465.4 419 421.3 460.1 371.4C496.3 327.5 528.2 279 528.2 229.1C528.2 182.1 490.1 144 443.1 144zM335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1C576 297.7 533.1 358 496.9 401.9C452.8 455.5 399.6 502 363.1 529.8C350.8 539.2 335.6 543.9 320 543.9C304.4 543.9 289.2 539.2 276.9 529.8C240.4 502 187.2 455.5 143.1 402C106.9 358.1 64 297.7 64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1L320 171.8L335 151.1z" />
+            </svg>
+          </div>
+          <div class="text-white font-[20px] pt-[10px]">
+            <h4 class="font-bold pt-[10px]">Favorites</h4>
+            <p class="pt-[10px]">Loved books</p>
+          </div>
+        </div>
+        <!-- card 6 -->
+        <div data-aos="flip-left"
+          class="sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 2xl:col-span-1 bg-[#803030] rounded-[10px] p-[20px]">
+          <div class="w-[40px] h-[40px] bg-pink-300 rounded-[10px] flex items-center">
+            <svg class="fill-white w-[20px] h-[20px] mx-auto flex justify-center " xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M416 224C398.3 224 384 209.7 384 192C384 174.3 398.3 160 416 160L576 160C593.7 160 608 174.3 608 192L608 352C608 369.7 593.7 384 576 384C558.3 384 544 369.7 544 352L544 269.3L374.6 438.7C362.1 451.2 341.8 451.2 329.3 438.7L224 333.3L86.6 470.6C74.1 483.1 53.8 483.1 41.3 470.6C28.8 458.1 28.8 437.8 41.3 425.3L201.3 265.3C213.8 252.8 234.1 252.8 246.6 265.3L352 370.7L498.7 224L416 224z" />
+            </svg>
+          </div>
+          <div class="text-white font-[20px] pt-[10px]">
+            <h4 class="font-bold pt-[10px]">Reading streak</h4>
+            <p class="pt-[10px]">Keep it up!</p>
+          </div>
+        </div>
+      </div>
+      <!-- grid 2 -->
+      <div
+        class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 pt-[30px] gap-[20px]">
+        <!-- 1 card -->
+        <div data-aos="flip-left"
+          class="sm:col-span-1 md:col-span-1 xl:col-span-1 2xl:col-span-1 lg:col-span-1 bg-[#803030] rounded-[10px] p-[30px]">
+          <div class="grid grid-rows-4 text-white">
+            <div class="row-span-1">
+              <div class="flex items-center gap-[5px]">
+                <svg class="fill-white w-[20px] h-[20px] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                  <path
+                    d="M512 320C512 214 426 128 320 128L320 512C426 512 512 426 512 320zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320z" />
+                </svg>
+                <p class="text-[30px] font-bold text-center">Monthly reading Goal</p>
+              </div>
+            </div>
+            <div class="row-span-1 ">
+              <div class="flex justify-between text-[20px]">
+                <p>progress</p>
+                <p>3/5 books</p>
+              </div>
+            </div>
+            <div class="row-span-1">
+
+              <div class="w-full bg-white rounded-full h-2.5 ">
+                <div class="bg-yellow-600 h-2.5 rounded-full" style="width: 45%"></div>
+              </div>
+
+            </div>
+            <div class="row-span-1  text-[20px]">
+              <p>2 book remaining to reach your goal</p>
+            </div>
+          </div>
+        </div>
+        <!-- 2 card -->
+        <div data-aos="flip-left"
+          class="sm:col-span-1 md:col-span-1 xl:col-span-1 2xl:col-span-1 lg:col-span-1 bg-[#803030] rounded-[10px] p-[30px]">
+          <div class="grid grid-rows-4 text-white">
+            <div class="row-span-1">
+              <div class="flex items-center gap-[5px]">
+                <div class="bg-yellow-200 w-[30px] h-[30px] rounded-3xl flex items-center">
+                  <img class="fill-white w-[20px] h-[20px] flex justify-center mx-auto"
+                    src="https://cdn-icons-png.flaticon.com/512/1378/1378621.png" alt="">
+                </div>
+                <p class="text-[30px] font-bold text-center"> Reading Insights</p>
+              </div>
+            </div>
+            <div class="row-span-1 ">
+              <div class=" text-[24px]">
+                <p>Average Rating</p>
+              </div>
+            </div>
+            <div class="row-span-1  text-[24px]">
+              <div class="flex justify-between">
+                <p>Favorite Genre</p>
+                <div>
+                  <div class="flex gap-[4px]">
+                    <p>4.9</p>
+                    <svg class="w-[24px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                      <path
+                        d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z" />
+                    </svg>
+                    <svg class="w-[24px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                      <path
+                        d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z" />
+                    </svg>
+                    <svg class="w-[24px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                      <path
+                        d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z" />
+                    </svg>
+                    <svg class="w-[24px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                      <path
+                        d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z" />
+                    </svg>
+                    <svg class="w-[24px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                      <path
+                        d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z" />
+                    </svg>
+                  </div>
+                  <div class="bg-pink-700 rounded-[10px] flex items-center h-[23px]">
+                    <p class="text-[12px] flex justify-center mx-auto">programming</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row-span-1  text-[24px] ">
+              <p class="">Pages Read</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- grid 3 -->
+      <div data-aos="fade-up-left"
+        class=" mt-[30px] bg-[#803030] rounded-[10px] sm:px-[10px] md:px-[30px] lg:px-[200px] xl:px-[100px] 2xl:px-[100px] ">
+        <div class="flex items-center  gap-[5px] text-white px-[30px] pt-[30px]">
+          <img class="w-[30px]" src="https://cdn-icons-png.freepik.com/512/5057/5057005.png" alt="medal">
+          <p class="text-[30px] font-bold">Achievements</p>
+        </div>
+        <div
+          class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-[20px] mt-[40px]  p-[30px]">
+          <!-- mini card 1 -->
+          <div class="col-span-1 bg-white rounded-[10px] py-[15px]">
+            <img class="w-[30px] flex mx-auto" src="https://cdn-icons-png.flaticon.com/512/526/526812.png" alt="">
+            <p class="flex  justify-center">First Book</p>
+            <p class="flex  justify-center">Read your First Book</p>
+          </div>
+          <!-- mini card 2 -->
+          <div class="col-span-1 bg-white rounded-[10px] py-[15px]">
+            <img class="w-[30px] flex mx-auto" src="https://cdn-icons-png.flaticon.com/512/526/526812.png" alt="">
+            <p class="flex  justify-center">Bookworm</p>
+            <p class="flex  justify-center">Read 10 Books</p>
+          </div>
+          <!-- mini card 3 -->
+          <div class="col-span-1 bg-white rounded-[10px] py-[15px]">
+            <img class="w-[30px] flex mx-auto" src="https://cdn-icons-png.flaticon.com/512/526/526812.png" alt="">
+            <p class="flex  justify-center">Speed Reader</p>
+            <p class="flex  justify-center">Read 5 Books in a month</p>
+          </div>
+          <!-- mini card 4 -->
+          <div class="col-span-1 bg-white rounded-[10px] py-[15px]">
+            <img class="w-[30px] flex mx-auto" src="https://cdn-icons-png.flaticon.com/512/526/526812.png" alt="">
+            <p class="flex  justify-center">Colleter</p>
+            <p class="flex  justify-center">Add 20 books to Favorite</p>
+          </div>
+          <!-- mini card 5 -->
+          <div class="col-span-1 bg-white rounded-[10px] py-[15px]">
+            <img class="w-[30px] flex mx-auto" src="https://cdn-icons-png.flaticon.com/512/526/526812.png" alt="">
+            <p class="flex  justify-center">Streak Master</p>
+            <p class="flex  justify-center">30 days reading streak</p>
+          </div>
+          <!-- mini card 6 -->
+          <div class="col-span-1 bg-white rounded-[10px] py-[15px]">
+            <img class="w-[30px] flex mx-auto" src="https://cdn-icons-png.flaticon.com/512/526/526812.png" alt="">
+            <p class="flex  justify-center">Genre Explorer</p>
+            <p class="flex  justify-center">Read from 5 different Genre</p>
+          </div>
+          <!-- mini card 7 -->
+          <div class="col-span-1 bg-white rounded-[10px] py-[15px]">
+            <img class="w-[30px] flex mx-auto" src="https://cdn-icons-png.flaticon.com/512/526/526812.png" alt="">
+            <p class="flex  justify-center">Page turner</p>
+            <p class="flex  justify-center">Read 10,000 pages</p>
+          </div>
+          <!-- mini card 8 -->
+          <div class="col-span-1 bg-yellow-600 rounded-[10px] py-[15px]">
+            <img class="w-[30px] flex mx-auto"
+              src="https://static.vecteezy.com/system/resources/previews/014/615/904/non_2x/golden-yellow-trophy-icon-for-the-winner-of-a-sports-event-png.png"
+              alt="">
+            <p class="flex  justify-center">Dedicated Reader</p>
+            <p class="flex  justify-center">Read every day for a week</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Footer -->
+    <!-- Enhanced Logo Section - Copy this part -->
+    <footer class="text-white" style="background-color: #803030;">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                
+                <!-- Enhanced Logo Section -->
+                <div class="lg:col-span-1 flex flex-col items-center lg:items-start justify-center">
+                    <div class="enhanced-logo-container">
+                        <img src="/images/TOSANLOGO.png" alt="TOSAN Logo" class="enhanced-logo">
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">EXPLORE</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Admission</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Short Course</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Scholarship</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">News & Events</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Learning Portal</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Apply Now</a></li>
+                    </ul>
+                </div>
+
+                <!-- Address and Contacts -->
+                <div class="lg:col-span-1">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">ADDRESS</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            No. 24, Street 562, Sangkat Boeung<br>
+                            Kak I, Khan Toul Kork, Phnom Penh,<br>
+                            Cambodia
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-white">CONTACTS</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-gray-300 mr-3"></i>
+                                <a href="mailto:info.istad@gmail.com" class="text-gray-200 hover:text-white">info.istad@gmail.com</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 95-990-910</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 93-990-910</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                                <i class="fab fa-youtube text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <i class="fab fa-telegram text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                <i class="fab fa-tiktok text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni and App Section -->
+                <div class="lg:col-span-1">
+                    <!-- Visit Alumni Site -->
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-user-graduate text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">VISIT ALUMNI SITE</h3>
+                                <a href="#" class="text-gray-200 hover:text-white">Alumni Application</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CSTAD APP -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">CSTAD APP</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-apple text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">Download on the</p>
+                                        <p class="text-white font-semibold">App Store</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-google-play text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">GET IT ON</p>
+                                        <p class="text-white font-semibold">Google Play</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow Us Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">Follow Us</h3>
+                    <div class="bg-white rounded-lg p-2 h-32">
+                        <img src="../images/facebook.png" alt="">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-red-400 border-opacity-30">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <p class="text-center text-gray-200">
+                    © 2024 Center of Science and Technology Advanced Development | All Rights Reserved
+                </p>
+            </div>
+        </div>
+
+        <!-- Floating Chat Button -->
+        <div class="fixed bottom-6 right-6">
+            <button class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors">
+                <i class="fas fa-comments text-white text-xl"></i>
+            </button>
+        </div>
+    </footer>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+<style>
+      .enhanced-logo-container {
+        position: relative;
+        display: inline-block;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      
+      .enhanced-logo-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(255,255,255,0.2);
+      }
+      
+      .enhanced-logo-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(255,215,0,0.2) 0%, transparent 50%, rgba(59,130,246,0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 20px;
+      }
+      
+      .enhanced-logo-container:hover::before {
+        opacity: 1;
+      }
+      
+      .enhanced-logo {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .enhanced-logo-container:hover .enhanced-logo {
+        transform: scale(1.1);
+      }
+      
+      @media (min-width: 1024px) {
+        .enhanced-logo {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    </style>
+     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init();
+  </script>
+    </body>
+
+</html>
