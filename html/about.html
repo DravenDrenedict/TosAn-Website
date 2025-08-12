@@ -7,59 +7,74 @@
   <title>Document</title>
   <link rel="stylesheet" href="/src/output.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+        .team-member-1 { transform: translate(-50%, -50%) rotate(-45deg) translateY(-280px) rotate(45deg); }
+        .team-member-2 { transform: translate(-50%, -50%) rotate(0deg) translateY(-280px) rotate(0deg); }
+        .team-member-3 { transform: translate(-50%, -50%) rotate(45deg) translateY(-280px) rotate(-45deg); }
+        .team-member-4 { transform: translate(-50%, -50%) rotate(90deg) translateY(-280px) rotate(-90deg); }
+        .team-member-5 { transform: translate(-50%, -50%) rotate(135deg) translateY(-280px) rotate(-135deg); }
+        .team-member-6 { transform: translate(-50%, -50%) rotate(180deg) translateY(-280px) rotate(-180deg); }
+        .team-member-7 { transform: translate(-50%, -50%) rotate(225deg) translateY(-280px) rotate(-225deg); }
+        .team-member-8 { transform: translate(-50%, -50%) rotate(270deg) translateY(-280px) rotate(-270deg); }
+        
+        .custom-color { background-color: #803030; }
+        .custom-border { border-color: #803030; }
+        .custom-text { color: #803030; }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
 </head>
-
 <body>
-  <!-- nav bar -->
-  <nav class="bg-[#803030] p-4 sticky top-0 z-50 shadow-lg">
+<!-- nav bar -->
+<nav class="bg-[#803030] p-0 sticky top-0 z-50 shadow-lg">
     <div class="max-w-full mx-[30px] flex items-center justify-between">
-      <!-- Logo Placeholder -->
-      <div class="text-white text-2xl font-semibold">
-        <!-- Replace with your logo -->
-        <img src="/images/categories/tosAn.png" alt="Logo" class="h-10 w-auto">
-      </div>
+        <!-- Logo Placeholder -->
+        <div class="text-white text-2xl font-semibold ml-4">
+            <!-- Replace with your logo -->
+            <img src="../images/TOSANLOGO.png" alt="Logo" class="h-14 sm:h-16 md:h-20 lg:h-24 w-auto">
+        </div>
 
-      <!-- Navbar Links -->
-      <div class="hidden md:flex space-x-8">
-        <a href="/index.html" class="text-white hover:text-gray-300 transition duration-300">Home</a>
-        <a href="/html/about.html" class="text-white hover:text-gray-300 transition duration-300">About</a>
-        <a href="/html/categories.html" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
-        <a href="/html/readinglist.html" class="text-white hover:text-gray-300 transition duration-300">Reading
-          Lists</a>
-        <a href="/html/stattistics.html" class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
-      </div>
+        <!-- Navbar Links -->
+        <div class="hidden md:flex space-x-8">
+            <a href="../index.html" class="text-white hover:text-gray-300 transition duration-300">Home</a>
+            <a href="../html/about.html" class="text-white hover:text-gray-300 transition duration-300">About</a>
+            <a href="../html/categories.html" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
+            <a href="../html/readinglist.html" class="text-white hover:text-gray-300 transition duration-300">Reading Lists</a>
+            <a href="../html/stattistics.html" class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
+        </div>
 
-      <!-- Favorite Button with Heart Icon (updated style) -->
-      <a href="/html/add-fav.html" class="flex items-center space-x-2 text-white">
-        <i class="fas fa-heart text-xl"></i>
-        <span>Favorites</span>
-        <span class="text-xs bg-red-600 text-white rounded-full px-2 py-1">0</span>
-      </a>
+        <!-- Favorite Button with Heart Icon (updated style) -->
+        <a href="html/add-fav.html" class="flex items-center space-x-2 text-white">
+            <i class="fas fa-heart text-xl"></i>
+            <span>Favorites</span>
+            <span class="text-xs bg-red-600 text-white rounded-full px-2 py-1">0</span>
+        </a>
 
-      <!-- Hamburger Menu for Mobile -->
-      <div class="md:hidden flex items-center">
-        <button id="hamburger-btn" class="text-white focus:outline-none">
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </div>
+        <!-- Hamburger Menu for Mobile -->
+        <div class="md:hidden flex items-center">
+            <button id="hamburger-btn" class="text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
     </div>
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden">
-      <div class="flex flex-col space-y-4 text-center py-4">
-        <a href="#" class="text-white hover:text-gray-300 transition duration-300">Home</a>
-        <a href="#" class="text-white hover:text-gray-300 transition duration-300">About</a>
-        <a href="#" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
-        <a href="#" class="text-white hover:text-gray-300 transition duration-300">Reading Lists</a>
-        <a href="#" class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
-      </div>
+        <div class="flex flex-col space-y-4 text-center py-4">
+            <a href="../index.html" class="text-white hover:text-gray-300 transition duration-300">Home</a>
+            <a href="../html/about.html" class="text-white hover:text-gray-300 transition duration-300">About</a>
+            <a href="../html/categories.html" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
+            <a href="../html/readinglist.html" class="text-white hover:text-gray-300 transition duration-300">Reading Lists</a>
+            <a href="../html/stattistics.html" class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
+        </div>
     </div>
-  </nav>
+</nav>
+
   <!-- About Us Section -->
   <section class="max-w-6xl mx-auto px-4 py-12">
     <div class="grid md:grid-cols-2 gap-8 items-center">
       <!-- Text -->
-      <div>
+      <div data-aos="fade-up-right">
         <h2 class="text-3xl font-bold mb-4">About us</h2>
         <p class="text-lg leading-relaxed">
           Welcome to our learning group – a dedicated team led by a mentor and
@@ -71,27 +86,27 @@
         </p>
       </div>
       <!-- Image (resized) -->
-      <div class="flex justify-center">
+      <div class="flex justify-center" data-aos="zoom-out">
         <img src="/images/about/workSpace.png" alt="Team workspace" class="w-80 h-auto rounded-lg shadow-md" />
       </div>
     </div>
   </section>
 
   <!-- Mentors Section -->
-  <section class="max-w-4xl mx-auto px-4 py-12 text-center">
+  <section class="max-w-4xl mx-auto px-4 py-12 text-center" data-aos="flip-left" data-aos-delay="200">
     <h2 class="text-3xl font-bold mb-10">Mentors</h2>
     <div class="flex flex-col md:flex-row justify-center items-center gap-16">
       <!-- Mentor 1 -->
       <div>
         <img src="/images/about/mentor1.png" alt="Mr. Kim Chansokpheng"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-gray-300" />
+          class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 custom-border" />
         <h3 class="text-lg font-semibold">Mr. Kim Chansokpheng</h3>
         <p class="text-sm text-gray-600">Teacher | Web Design Afternoon</p>
       </div>
       <!-- Mentor 2 -->
       <div>
         <img src="/images/about/mentor2.png" alt="Mr. Ing Davann"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-gray-300" />
+          class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 custom-border" />
         <h3 class="text-lg font-semibold">Mr. Ing Davann</h3>
         <p class="text-sm text-gray-600">Teacher | Web Design Afternoon</p>
       </div>
@@ -99,159 +114,304 @@
   </section>
 
   <!-- Members Section -->
-  <section class="max-w-7xl mx-auto px-4 py-12 text-center">
-    <h2 class="text-3xl font-bold mb-12">Members</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-10 gap-y-12">
-      <!-- Member 1 -->
-      <div>
-        <img src="/images/about/leader.png" alt="Nuth Chanrithea"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-2 border-4 border-gray-300" />
-        <h3 class="font-semibold">Nuth Chanrithea</h3>
-        <p class="text-sm text-gray-600">AUPP student</p>
-      </div>
-      <!-- Member 2 -->
-      <div>
-        <img src="/images/about/subLeader.png" alt="Pat Konsela"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-2 border-4 border-gray-300" />
-        <h3 class="font-semibold">Pat Konsela</h3>
-        <p class="text-sm text-gray-600">RUPP student</p>
-      </div>
-      <!-- Member 3 -->
-      <div>
-        <img src="/images/about/tevy.png" alt="Chamreun Molikatevy"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-2 border-4 border-gray-300" />
-        <h3 class="font-semibold">Chamreun Molikatevy</h3>
-        <p class="text-sm text-gray-600">RUPP student</p>
-      </div>
-      <!-- Member 4 -->
-      <div>
-        <img src="/images/about/karana.png" alt="Chamrouen Sreykakruna"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-2 border-4 border-gray-300" />
-        <h3 class="font-semibold">Chamrouen Sreykakruna</h3>
-        <p class="text-sm text-gray-600">NU student</p>
-      </div>
-      <!-- Member 5 -->
-      <div>
-        <img src="/images/about/narea.png" alt="Mon Narea"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-2 border-4 border-gray-300" />
-        <h3 class="font-semibold">Mon Narea</h3>
-        <p class="text-sm text-gray-600">RUPP student</p>
-      </div>
-      <!-- Member 6 -->
-      <div>
-        <img src="/images/about/sreyNich.png" alt="Tat Sreynich"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-2 border-4 border-gray-300" />
-        <h3 class="font-semibold">Tat Sreynich</h3>
-        <p class="text-sm text-gray-600">BBU student</p>
-      </div>
-      <!-- Member 7 -->
-      <div>
-        <img src="/images/about/tonghieng.png" alt="Sophors Tonghieng"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-2 border-4 border-gray-300" />
-        <h3 class="font-semibold">Sophors Tonghieng</h3>
-        <p class="text-sm text-gray-600">RUPP student</p>
-      </div>
-      <!-- Member 8 -->
-      <div>
-        <img src="/images/about/sreyNeang.png" alt="Eng Sreyneang"
-          class="w-40 h-40 mx-auto rounded-full object-cover mb-2 border-4 border-gray-300" />
-        <h3 class="font-semibold">Eng Sreyneang</h3>
-        <p class="text-sm text-gray-600">NU student</p>
-      </div>
+  <section class="bg-white min-h-screen py-16" data-aos="fade-up-right" data-aos-delay="200">
+    <div class="container mx-auto px-4">
+        <!-- Central Container -->
+        <div class="relative w-full max-w-6xl mx-auto h-[800px] flex items-center justify-center">
+            
+            <!-- Central Circle -->
+            <div class="custom-color w-72 h-72 rounded-full flex items-center justify-center text-white text-center shadow-2xl z-10">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">Meet the</h1>
+                    <h1 class="text-4xl font-bold">Team</h1>
+                </div>
+            </div>
+
+            <!-- Team Member 1 -->
+            <div class="absolute top-1/2 left-1/2 team-member-1">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 custom-border mb-3">
+                        <img src="../images/about/leader.png" alt="John Smith" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Nuth Chanrithea</h3>
+                </div>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="absolute top-1/2 left-1/2 team-member-2">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 custom-border mb-3">
+                        <img src="../images/about/subLeader.png" alt="Emily Davis" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Pat Konsela</h3>
+                </div>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="absolute top-1/2 left-1/2 team-member-3">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 custom-border mb-3">
+                        <img src="../images/about/karana.png" alt="Michael Clark" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Chamrouen Sreykakruna</h3>
+                </div>
+            </div>
+
+            <!-- Team Member 4 -->
+            <div class="absolute top-1/2 left-1/2 team-member-4">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 custom-border mb-3">
+                        <img src="../images/about/narea.png" alt="Sarah Johnson" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Mon Narea</h3>
+                </div>
+            </div>
+
+            <!-- Team Member 5 -->
+            <div class="absolute top-1/2 left-1/2 team-member-5">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 custom-border mb-3">
+                        <img src="../images/about/sreyNeang.png" alt="David Brown" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Eng Sreyneang</h3>
+                </div>
+            </div>
+
+            <!-- Team Member 6 -->
+            <div class="absolute top-1/2 left-1/2 team-member-6">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 custom-border mb-3">
+                        <img src="../images/about/sreyNich.png" alt="Lisa Wilson" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Tat Sreynich</h3>
+                </div>
+            </div>
+
+            <!-- Team Member 7 -->
+            <div class="absolute top-1/2 left-1/2 team-member-7">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 custom-border mb-3">
+                        <img src="../images/about/tevy.png" alt="James Miller" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Chamreun Molikatevy</h3>
+                </div>
+            </div>
+
+            <!-- Team Member 8 -->
+            <div class="absolute top-1/2 left-1/2 team-member-8">
+                <div class="text-center">
+                    <div class="w-32 h-32 rounded-full overflow-hidden mx-auto border-4 custom-border mb-3">
+                        <img src="../images/about/tonghieng.png" alt="Rachel Green" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Sophors Tonghieng</h3>
+                </div>
+            </div>
+
+        </div>
     </div>
   </section>
   <!-- Footer -->
-  <footer class="bg-[#803030] text-white mt-10">
-    <div class="max-w-7xl mx-auto px-4 py-10">
-      <div class="text-center mb-10 px-4">
-        <h2 class="text-2xl md:text-3xl font-bold flex justify-center items-center gap-2 flex-wrap">
-          Stay Update with
-          <img src="/images/categories/tosAn.png" alt="Logo" class="h-12 md:h-16 inline-block" />
-        </h2>
-        <p class="text-sm md:text-base mt-2 text-gray-200 max-w-xl mx-auto">
-          Get the latest book recommendation, reading tip, and exclusive
-          content delivered to your inbox
-        </p>
-        <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
-          <input type="email" placeholder="Enter your email"
-            class="w-72 px-4 py-2 rounded-md bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white" />
-          <button class="w-40 bg-white text-black font-semibold px-4 py-2 rounded-md hover:bg-gray-200 transition">
-            Subscribe
-          </button>
-        </div>
-      </div>
-      <div class="border-t border-white/30 my-10"></div>
-      <div><img src="/images/categories/tosAn.png" alt="" class="h-11" /></div>
-      <div class="h-11"></div>
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-sm">
-        <div>
-          <p>
-            Your ultimate destination for discovering, tracking, and enjoying
-            books. Join thousands of readers in building their perfect digital
-            library.
-          </p>
-          <div class="mt-4 space-y-1">
-            <div class="flex items-center space-x-2">
-              <span>📍</span><span>San Francisco, CA</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span>📞</span><span>+1 (555) 123-4567</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <span>📧</span><span>hello@bookverse.com</span>
-            </div>
-          </div>
-          <div class="flex space-x-4 mt-4 text-xl">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-pinterest"></i></a>
-          </div>
-        </div>
-        <div>
-          <h3 class="font-semibold mb-2">Explore</h3>
-          <ul class="space-y-1">
-            <li><a href="#">New Releases</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Popular Books</a></li>
-            <li><a href="#">Top Rated</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold mb-2">Features</h3>
-          <ul class="space-y-1">
-            <li><a href="#">Reading Lists</a></li>
-            <li><a href="#">Favorites</a></li>
-            <li><a href="#">Statistics</a></li>
-            <li><a href="#">Book Reviews</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold mb-2">Support</h3>
-          <ul class="space-y-1">
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Community</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold mb-2">Legal</h3>
-          <ul class="space-y-1">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Cookie Policy</a></li>
-            <li><a href="#">DMCA</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="flex justify-end mt-1 mr-4">
-        <img src="/images/categories/Istad.png" alt="CSTAD Logo" class="h-18 md:h-20 lg:h-38" />
-      </div>
-    </div>
-  </footer>
+    <!-- Enhanced Logo Section - Copy this part -->
+    <footer class="text-white" style="background-color: #803030;">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                
+                <!-- Enhanced Logo Section -->
+                <div class="lg:col-span-1 flex flex-col items-center lg:items-start justify-center">
+                    <div class="enhanced-logo-container">
+                        <img src="/images/TOSANLOGO.png" alt="TOSAN Logo" class="enhanced-logo">
+                    </div>
+                </div>
 
+                <!-- Explore Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">EXPLORE</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Admission</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Short Course</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Scholarship</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">News & Events</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Learning Portal</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Apply Now</a></li>
+                    </ul>
+                </div>
+
+                <!-- Address and Contacts -->
+                <div class="lg:col-span-1">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">ADDRESS</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            No. 24, Street 562, Sangkat Boeung<br>
+                            Kak I, Khan Toul Kork, Phnom Penh,<br>
+                            Cambodia
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-white">CONTACTS</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-gray-300 mr-3"></i>
+                                <a href="mailto:info.istad@gmail.com" class="text-gray-200 hover:text-white">info.istad@gmail.com</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 95-990-910</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 93-990-910</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                                <i class="fab fa-youtube text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <i class="fab fa-telegram text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                <i class="fab fa-tiktok text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni and App Section -->
+                <div class="lg:col-span-1">
+                    <!-- Visit Alumni Site -->
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-user-graduate text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">VISIT ALUMNI SITE</h3>
+                                <a href="#" class="text-gray-200 hover:text-white">Alumni Application</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CSTAD APP -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">CSTAD APP</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-apple text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">Download on the</p>
+                                        <p class="text-white font-semibold">App Store</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-google-play text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">GET IT ON</p>
+                                        <p class="text-white font-semibold">Google Play</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow Us Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">Follow Us</h3>
+                    <div class="bg-white rounded-lg p-2 h-32">
+                        <img src="../images/facebook.png" alt="">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-red-400 border-opacity-30">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <p class="text-center text-gray-200">
+                    © 2024 Center of Science and Technology Advanced Development | All Rights Reserved
+                </p>
+            </div>
+        </div>
+
+        <!-- Floating Chat Button -->
+        <div class="fixed bottom-6 right-6">
+            <button class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors">
+                <i class="fas fa-comments text-white text-xl"></i>
+            </button>
+        </div>
+    </footer>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+<style>
+      .enhanced-logo-container {
+        position: relative;
+        display: inline-block;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      
+      .enhanced-logo-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(255,255,255,0.2);
+      }
+      
+      .enhanced-logo-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(255,215,0,0.2) 0%, transparent 50%, rgba(59,130,246,0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 20px;
+      }
+      
+      .enhanced-logo-container:hover::before {
+        opacity: 1;
+      }
+      
+      .enhanced-logo {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .enhanced-logo-container:hover .enhanced-logo {
+        transform: scale(1.1);
+      }
+      
+      @media (min-width: 1024px) {
+        .enhanced-logo {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    </style>
 
 
 
@@ -262,6 +422,11 @@
     hamburgerBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init();
   </script>
 </body>
 

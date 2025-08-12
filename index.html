@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Discovery Website</title>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>TosAn</title>
+    
     <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="/src/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
     <script>
         tailwind.config = {
             theme: {
@@ -92,13 +92,16 @@
         }
     </style>
 </head>
-<!-- nav bar -->
-<nav class="bg-[#803030] p-4 sticky top-0 z-50 shadow-lg">
+
+<body class="bg-[#FFFFF]">
+
+    <!-- nav bar -->
+<nav class="bg-[#803030] p-0 sticky top-0 z-50 shadow-lg" data-aos="fade-up" data-aos-delay="200">
     <div class="max-w-full mx-[30px] flex items-center justify-between">
         <!-- Logo Placeholder -->
-        <div class="text-white text-2xl font-semibold">
+        <div class="text-white text-2xl font-semibold ml-4">
             <!-- Replace with your logo -->
-            <img src="./images/categories/tosAn.png" alt="Logo" class="h-10 w-auto">
+            <img src="./images/TOSANLOGO.png" alt="Logo" class="h-14 sm:h-16 md:h-20 lg:h-24 w-auto">
         </div>
 
         <!-- Navbar Links -->
@@ -106,10 +109,8 @@
             <a href="index.html" class="text-white hover:text-gray-300 transition duration-300">Home</a>
             <a href="html/about.html" class="text-white hover:text-gray-300 transition duration-300">About</a>
             <a href="html/categories.html" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
-            <a href="html/readinglist.html" class="text-white hover:text-gray-300 transition duration-300">Reading
-                Lists</a>
-            <a href="html/stattistics.html"
-                class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
+            <a href="html/readinglist.html" class="text-white hover:text-gray-300 transition duration-300">Reading Lists</a>
+            <a href="html/stattistics.html" class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
         </div>
 
         <!-- Favorite Button with Heart Icon (updated style) -->
@@ -130,28 +131,26 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden">
         <div class="flex flex-col space-y-4 text-center py-4">
-            <a href="#" class="text-white hover:text-gray-300 transition duration-300">Home</a>
-            <a href="#" class="text-white hover:text-gray-300 transition duration-300">About</a>
-            <a href="#" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
-            <a href="#" class="text-white hover:text-gray-300 transition duration-300">Reading Lists</a>
-            <a href="#" class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
+            <a href="index.html" class="text-white hover:text-gray-300 transition duration-300">Home</a>
+            <a href="html/about.html" class="text-white hover:text-gray-300 transition duration-300">About</a>
+            <a href="html/categories.html" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
+            <a href="html/readinglist.html" class="text-white hover:text-gray-300 transition duration-300">Reading Lists</a>
+            <a href="html/stattistics.html" class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
         </div>
     </div>
 </nav>
 
-
-<body class="bg-[#FFFFF]">
     <!-- Header Section -->
     <header class="hero-section relative flex items-center justify-center bg-gradient-to-b from-black/70 to-black/50">
         <!-- Background Image -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/bd.png')">
+        <div data-aos="zoom-in" data-aos-delay="200" class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/bd.png')" data-aos="fade-up">
         </div>
 
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black/60"></div>
 
         <!-- Content -->
-        <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+        <div data-aos="fade-up-right" class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
             <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Discover Amazing Books
             </h1>
@@ -171,7 +170,7 @@
                 </div>
 
                 <!-- Input field -->
-                <input type="text" placeholder="Search for books or authors..." class="w-full pl-12 pr-4 py-3 rounded-full bg-transparent  text-gray-900 placeholder-gray-500 
+                <input type="text" placeholder="Search for books or authors..." class="w-full pl-12 pr-4 py-3 rounded-full bg-transparent placeholder-gray-500 
                     border border-white hover:border-[#803030] focus:border-[#803030] 
                     focus:outline-none focus:ring-2 focus:ring-custom-brown transition-all duration-300">
             </div>
@@ -208,7 +207,7 @@
                                 d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
                             </path>
                         </svg>
-                        <span class="text-black">Top Rate</span>
+                        <span>Top Rate</span>
                     </button>
                 </a>
             </div>
@@ -216,7 +215,7 @@
     </header>
 
     <!-- Book Carousel -->
-    <div class="py-20 bg-[#FFFFF]">
+    <div class="py-20 bg-[#FFFFF]" data-aos="fade-up" data-aos-delay="100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="swiper bookSwiper">
                 <div class="swiper-wrapper">
@@ -286,13 +285,13 @@
     </div>
 
     <!-- Category Cards -->
-    <div class="py-12 bg-[#FFFFF]">
+    <div  class="py-12 bg-[#FFFFF]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
             <!-- Card Wrapper -->
             <div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
 
                 <!-- Horizontal Card -->
-                <div
+                <div data-aos-delay="100" data-aos="fade-left"
                     class="flex bg-[#6B1D1D] text-white rounded-2xl p-4 hover:shadow-xl transition-all duration-300 cursor-pointer w-full">
                     <div class="w-1/3 min-w-[150px] max-w-[200px]">
                         <img src="/images/categories/rom1.jpg" alt="Pride and Prejudice"
@@ -319,7 +318,7 @@
                 </div>
 
                 <!-- Horizontal Card -->
-                <div
+                <div data-aos="fade-up"
                     class="flex bg-[#6B1D1D] text-white rounded-2xl p-4 hover:shadow-xl transition-all duration-300 cursor-pointer w-full">
                     <div class="w-1/3 min-w-[150px] max-w-[200px]">
                         <img src="/images/book2.png" alt="Dia De Muertos" class="w-full h-full object-cover rounded-xl">
@@ -347,7 +346,7 @@
                 </div>
 
                 <!-- Horizontal Card -->
-                <div
+                <div data-aos="fade-right"
                     class="flex bg-[#6B1D1D] text-white rounded-2xl p-4 hover:shadow-xl transition-all duration-300 cursor-pointer w-full">
                     <div class="w-1/3 min-w-[150px] max-w-[200px]">
                         <img src="/images/categories/1.jpg" alt="Dia De Muertos"
@@ -381,7 +380,7 @@
 
     <!-- This Week Section -->
     <div class="py-12 bg-[#FFFFF]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="flip-left">
             <h2 class="text-2xl font-bold text-gray-900 mb-8">This week</h2>
 
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
@@ -403,7 +402,7 @@
                     <p class="text-xs text-gray-600">As a princess she recommends</p>
                 </div>
 
-                <div class="weekly-card group cursor-pointer mx-auto">
+                <div class="weekly-card group cursor-pointer mx-auto" data-aos="flip-left">
                     <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
                         <img src="/images/3.png" alt="Reign of Star"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -421,7 +420,7 @@
                     <p class="text-xs text-gray-600">With darkness spreading across this</p>
                 </div>
 
-                <div class="weekly-card group cursor-pointer mx-auto">
+                <div class="weekly-card group cursor-pointer mx-auto" data-aos="flip-left">
                     <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
                         <img src="/images/4.png" alt="Legend Bear"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -439,7 +438,7 @@
                     <p class="text-xs text-gray-600">The King Of How to Arctic legend</p>
                 </div>
 
-                <div class="weekly-card group cursor-pointer mx-auto">
+                <div class="weekly-card group cursor-pointer mx-auto" data-aos="flip-left">
                     <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
                         <img src="/images/5.png" alt="Creature"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -457,7 +456,7 @@
                     <p class="text-xs text-gray-600">Magnificent Book of Creatures</p>
                 </div>
 
-                <div class="weekly-card group cursor-pointer mx-auto">
+                <div class="weekly-card group cursor-pointer mx-auto" data-aos="flip-left">
                     <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
                         <img src="/images/8.png" alt="Bound Inked"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -479,7 +478,7 @@
     </div>
 
     <!-- Promo Banner -->
-    <div class="py-12 bg-[#803030]">
+    <div class="py-12 bg-[#803030]" data-aos="zoom-out">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center justify-between">
                 <div class="flex-1 mb-6 lg:mb-0">
@@ -517,16 +516,16 @@
                     tempor incididunt ut labore et consectetur magna.
                 </p>
 
-                <div class="flex justify-center items-center mt-6">
+                <div class="flex justify-center items-center mt-6" data-aos="fade-up-left">
                     <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
                         <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=1"
                             alt="Customer 1" class="w-full h-full object-cover">
                     </div>
-                    <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden -ml-2">
+                    <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden -ml-2" data-aos="fade-up-left">
                         <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=1"
                             alt="Customer 2" class="w-full h-full object-cover">
                     </div>
-                    <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden -ml-2">
+                    <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden -ml-2" data-aos="fade-up-left">
                         <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=1"
                             alt="Customer 3" class="w-full h-full object-cover">
                     </div>
@@ -649,98 +648,210 @@
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="bg-[#803030] text-white mt-10">
-        <div class="max-w-7xl mx-auto px-4 py-10">
-            <div class="text-center mb-10 px-4">
-                <h2 class="text-2xl md:text-3xl font-bold flex justify-center items-center gap-2 flex-wrap">
-                    Stay Update with
-                    <img src="/images/categories/tosAn.png" alt="Logo" class="h-12 md:h-16 inline-block" />
-                </h2>
-                <p class="text-sm md:text-base mt-2 text-gray-200 max-w-xl mx-auto">
-                    Get the latest book recommendation, reading tip, and exclusive
-                    content delivered to your inbox
-                </p>
-                <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <input type="email" placeholder="Enter your email"
-                        class="w-72 px-4 py-2 rounded-md bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white" />
-                    <button
-                        class="w-40 bg-white text-black font-semibold px-4 py-2 rounded-md hover:bg-gray-200 transition">
-                        Subscribe
-                    </button>
-                </div>
-            </div>
-            <div class="border-t border-white/30 my-10"></div>
-            <div><img src="/images/categories/tosAn.png" alt="" class="h-11" /></div>
-            <div class="h-11"></div>
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-6 text-sm">
-                <div>
-                    <p>
-                        Your ultimate destination for discovering, tracking, and enjoying
-                        books. Join thousands of readers in building their perfect digital
-                        library.
-                    </p>
-                    <div class="mt-4 space-y-1">
-                        <div class="flex items-center space-x-2">
-                            <span>📍</span><span>San Francisco, CA</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span>📞</span><span>+1 (555) 123-4567</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span>📧</span><span>hello@bookverse.com</span>
-                        </div>
-                    </div>
-                    <div class="flex space-x-4 mt-4 text-xl">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
+
+
+   <!-- Footer -->
+    <!-- Enhanced Logo Section - Copy this part -->
+    <footer class="text-white" style="background-color: #803030;">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                
+                <!-- Enhanced Logo Section -->
+                <div class="lg:col-span-1 flex flex-col items-center lg:items-start justify-center">
+                    <div class="enhanced-logo-container">
+                        <img src="/images/TOSANLOGO.png" alt="TOSAN Logo" class="enhanced-logo">
                     </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Explore</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#">New Releases</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Popular Books</a></li>
-                        <li><a href="#">Top Rated</a></li>
+
+                <!-- Explore Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">EXPLORE</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Admission</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Short Course</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Scholarship</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">News & Events</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Learning Portal</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Apply Now</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Features</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#">Reading Lists</a></li>
-                        <li><a href="#">Favorites</a></li>
-                        <li><a href="#">Statistics</a></li>
-                        <li><a href="#">Book Reviews</a></li>
-                    </ul>
+
+                <!-- Address and Contacts -->
+                <div class="lg:col-span-1">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">ADDRESS</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            No. 24, Street 562, Sangkat Boeung<br>
+                            Kak I, Khan Toul Kork, Phnom Penh,<br>
+                            Cambodia
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-white">CONTACTS</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-gray-300 mr-3"></i>
+                                <a href="mailto:info.istad@gmail.com" class="text-gray-200 hover:text-white">info.istad@gmail.com</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 95-990-910</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 93-990-910</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                                <i class="fab fa-youtube text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <i class="fab fa-telegram text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                <i class="fab fa-tiktok text-white"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Support</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Community</a></li>
-                    </ul>
+
+                <!-- Alumni and App Section -->
+                <div class="lg:col-span-1">
+                    <!-- Visit Alumni Site -->
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-user-graduate text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">VISIT ALUMNI SITE</h3>
+                                <a href="#" class="text-gray-200 hover:text-white">Alumni Application</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CSTAD APP -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">CSTAD APP</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-apple text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">Download on the</p>
+                                        <p class="text-white font-semibold">App Store</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-google-play text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">GET IT ON</p>
+                                        <p class="text-white font-semibold">Google Play</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold mb-2">Legal</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">DMCA</a></li>
-                    </ul>
+
+                <!-- Follow Us Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">Follow Us</h3>
+                    <div class="bg-white rounded-lg p-2 h-32">
+                        <img src="/images/facebook.png" alt="">
+
+                    </div>
                 </div>
-            </div>
-            <div class="flex justify-end mt-1 mr-4">
-                <img src="/images/categories/Istad.png" alt="CSTAD Logo" class="h-18 md:h-20 lg:h-38" />
+
             </div>
         </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-red-400 border-opacity-30">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <p class="text-center text-gray-200">
+                    © 2024 Center of Science and Technology Advanced Development | All Rights Reserved
+                </p>
+            </div>
+        </div>
+
+        <!-- Floating Chat Button -->
+        <div class="fixed bottom-6 right-6">
+            <button class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors">
+                <i class="fas fa-comments text-white text-xl"></i>
+            </button>
+        </div>
     </footer>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+<style>
+      .enhanced-logo-container {
+        position: relative;
+        display: inline-block;
+        padding: 24px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      
+      .enhanced-logo-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(255,255,255,0.2);
+      }
+      
+      .enhanced-logo-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(255,215,0,0.2) 0%, transparent 50%, rgba(59,130,246,0.2) 100%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 20px;
+      }
+      
+      .enhanced-logo-container:hover::before {
+        opacity: 1;
+      }
+      
+      .enhanced-logo {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .enhanced-logo-container:hover .enhanced-logo {
+        transform: scale(1.1);
+      }
+      
+      @media (min-width: 1024px) {
+        .enhanced-logo {
+          width: 150px;
+          height: 150px;
+        }
+      }
+    </style>
     <script>
         // Initialize Swiper
         const swiper = new Swiper('.bookSwiper', {
@@ -766,6 +877,22 @@
             },
         });
     </script>
+    <!-- Add JavaScript to toggle the mobile menu -->
+        <script>
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburgerBtn.addEventListener('click', () => {
+                // Toggle the visibility of the mobile menu
+                mobileMenu.classList.toggle('hidden');
+            });
+        </script>
+        <script type="module" src="/js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init();
+  </script>
 </body>
 
 </html>
