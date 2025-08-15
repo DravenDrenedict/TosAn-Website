@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Categories</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../output.css">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    .category-btn.active {
+      background-color: #783232;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!-- Navigation -->
+  <nav class="bg-[#803030] text-white p-4 sticky top-0 z-50">
+    <div class="flex justify-between items-center">
+      <a href="../index.html"><button onclick="goBack()" class="text-sm">&larr; Back</button></a>
+      <h1 class="text-lg font-semibold">Book Categories</h1>
+      <div class="relative">
+        <button class="text-sm" onclick="showFavorites()">
+          <span><i class="fas fa-heart text-xl"></i></span> Favorite (<span id="favCount">0</span>)
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex flex-col md:flex-col lg:flex-row p-4 gap-6" data-aos="flip-left">
+    <!-- Sidebar with categories -->
+    <aside class="w-full sm:w-full lg:w-1/6 ml-0 lg:ml-[60px] mt-4 sm:mt-6 lg:mt-[60px]" data-aos="flip-left">
+      <div class="bg-[#4d1d1d] text-white p-4 sm:p-5 lg:p-6 rounded-lg">
+        <h2 class="font-bold text-lg mb-3">Categories</h2>
+        <ul class="space-y-2">
+          <li>
+            <button id="category-Fantasy" class="category-btn w-full text-left px-3 py-2 rounded active" onclick="filterBooks('Fantasy', this)">
+              Fantasy
+            </button>
+          </li>
+          <li>
+            <button id="category-Horror" class="category-btn w-full text-left px-3 py-2 rounded hover:bg-[#783232]" onclick="filterBooks('Horror', this)">
+              Horror
+            </button>
+          </li>
+          <li>
+            <button id="category-Romance" class="category-btn w-full text-left px-3 py-2 rounded hover:bg-[#783232]" onclick="filterBooks('Romance', this)">
+              Romance
+            </button>
+          </li>
+          <li>
+            <button id="category-SciFi" class="category-btn w-full text-left px-3 py-2 rounded hover:bg-[#783232]" onclick="filterBooks('Sci-Fi', this)">
+              Science fiction
+            </button>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Book Grid Section -->
+    <section class="flex-1">
+      <h2 id="categoryTitle" class="text-xl font-bold mb-2 text-center p-4">Fantasy</h2>
+      <p id="categoryDescription" class="text-sm text-gray-600 mb-4 text-center">Discover amazing fantasy books</p>
+      <div id="bookGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 m-[60px]">
+        <!-- Book cards will be dynamically inserted here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-white" style="background-color: #803030;">
+    <!-- Footer content here -->
+  </footer>
+
+  <!-- Include Categories JS -->
+  <script type="module" src="../js/categories.js"></script>
+
+</body>
+</html>
