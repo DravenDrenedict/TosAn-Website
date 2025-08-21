@@ -18,7 +18,7 @@ export const cardBookComponent = (book) => {
                     </div>
                 </div>
                 <div class="mt-4">
-                    <button
+                    <button onclick="openModal('${book.isbn13}')" 
                         class="text-sm font-medium bg-white text-[#6B1D1D] px-4 py-2 rounded-full hover:bg-gray-100 transition-colors">
                         View
                     </button>

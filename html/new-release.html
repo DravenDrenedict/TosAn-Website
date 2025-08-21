@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../output.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
-     <!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" /> -->
+    <link rel="icon" href="images/TOSANLOGO.png" sizes="128x128" type="image/png">
+   
 
 
 </head>
@@ -27,17 +28,16 @@
         <div class="hidden md:flex space-x-8">
             <a href="../index.html" class="text-white hover:text-gray-300 transition duration-300">Home</a>
             <a href="../html/about.html" class="text-white hover:text-gray-300 transition duration-300">About</a>
-            <a href="../html/categories.html" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
+            <a href="../html/catepage.html" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
             <a href="../html/readinglist.html" class="text-white hover:text-gray-300 transition duration-300">Reading Lists</a>
             <a href="../html/stattistics.html" class="text-white hover:text-gray-300 transition duration-300">Statistics</a>
         </div>
 
         <!-- Favorite Button with Heart Icon (updated style) -->
-        <a href="html/add-fav.html" class="flex items-center space-x-2 text-white">
-            <i class="fas fa-heart text-xl"></i>
-            <span>Favorites</span>
-            <span class="text-xs bg-red-600 text-white rounded-full px-2 py-1">0</span>
-        </a>
+         <a href="../html/favorites.html" class="text-white">
+                    <i class="fas fa-heart"></i>
+                    <span>Favorites</span>
+                </a>
 
         <!-- Hamburger Menu for Mobile -->
         <div class="md:hidden flex items-center">
@@ -65,252 +65,18 @@
     <!-- Grid: 5 columns -->
     <!-- <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6" > -->
 <div id="book-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
-      <!-- Card 1 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left" >
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/Tangent.jpg" alt="Tangent" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Tangent</h3>
-          <p class="text-gray-600">Lindsey Burroter</p>
-          <p class="text-sm text-gray-500">As a princess in the impoverished</p>
-        </div>
-      </div> -->
-
-      <!-- Card 2
-      <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/reignOfStar.jpg" alt="Reign of Star" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Reign of Star</h3>
-          <p class="text-gray-600">Jordan River</p>
-          <p class="text-sm text-gray-500">With darkness spreading across line</p>
-        </div>
-      </div> -->
-
-      <!-- Card 3 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/legenBear.jpg" alt="Legend Bear" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Legend Bear</h3>
-          <p class="text-gray-600">Author Name</p>
-          <p class="text-sm text-gray-500">The King of Bear in Arctic island</p>
-        </div>
-      </div> -->
-
-      <!-- Card 4 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/creature.jpg" alt="Creature" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-red-500 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Creature</h3>
-          <p class="text-gray-600">Magnificent Book of Creatures</p>
-        </div>
-      </div> -->
-
-      <!-- Card 5 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/Bound Inked.jpg" alt="Bound Inked" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Bound Inked</h3>
-          <p class="text-gray-600">Ava Larksen</p>
-          <p class="text-sm text-gray-500">The Crowns and Thorns Saga</p>
-        </div>
-      </div> -->
-
-      <!-- Card 6 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/creature1.jpg" alt="Creature" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Creature</h3>
-          <p class="text-gray-600">Oscar Wilde</p>
-          <p class="text-sm text-gray-500">A striking young man, a cursed portrait</p>
-        </div>
-      </div> -->
-
-      <!-- Card 7 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/thePhantom.jpg" alt="The Phantom" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">The Phantom</h3>
-          <p class="text-gray-600">Carl Laemmle</p>
-          <p class="text-sm text-gray-500">A masked phantom, a rising opera star</p>
-        </div>
-      </div> -->
-
-      <!-- Card 8 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left"> 
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/Frankenstein.jpg" alt="Frankenstein" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 right-2 rounded-full w-8 h-8 flex items-center  justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Frankenstein</h3>
-          <p class="text-gray-600">Mary Shelley</p>
-          <p class="text-sm text-gray-500">A brilliant scientist, a grotesque creation</p>
-        </div>
-      </div> -->
-
-      <!-- Card 9 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/theNotBook.jpg" alt="The noteBook" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">The noteBook</h3>
-          <p class="text-gray-600">silly bump</p>
-          <p class="text-sm text-gray-500">A Lifelong love story</p>
-        </div>
-      </div> -->
-
-      <!-- Card 10 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/pride.webp" alt="pride and Prejudice" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Pride and Prejudice</h3>
-          <p class="text-gray-600">Oscar Wilde</p>
-          <p class="text-sm text-gray-500">A classic of love </p>
-        </div>
-      </div> -->
-
-      <!-- Card 11 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/morella.jpg" alt="Morella" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Morella</h3>
-          <p class="text-gray-600">Edgar Allan Poe</p>
-          <p class="text-sm text-gray-500">A mysterious woman, an ominous love</p>
-        </div>
-      </div> -->
-
-      <!-- Card 12 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/adamRobert.jpg" alt="adam Robert" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Fantasy</h3>
-          <p class="text-gray-600">Adam Roberts</p>
-          <p class="text-sm text-gray-500">Adam Traces The Central</p>
-        </div>
-      </div> -->
-
-      <!-- Card 13 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/dracula.jpg" alt="Dracula" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Dracula</h3>
-          <p class="text-gray-600">Bram Stoker</p>
-          <p class="text-sm text-gray-500">Dracula is more a tale of terror</p>
-        </div>
-      </div> -->
-
-      <!-- Card 14 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/TheShadows.jpg" alt="The Shadows" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">The Shadows</h3>
-          <p class="text-gray-600">Alex North</p>
-          <p class="text-sm text-gray-500">The War of the Worlds</p>
-        </div>
-      </div> -->
-
-      <!-- Card 15 -->
-      <!-- <div class="transform hover:scale-105 transition duration-300 ease-in-out" data-aos="flip-left">
-        <div class="relative shadow-lg rounded-lg overflow-hidden">
-          <img src="/images/newRelease/amberCrown.jpg" alt="Amber Crown" class="w-full h-72 object-cover">
-          <div class="heart-btn absolute top-2 left-2 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer
-                    bg-blue-100 bg-opacity-50 transition-colors duration-300">
-            <span class="text-white text-sm transition-colors duration-300">♥</span>
-          </div>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-lg font-semibold text-gray-900">Amber Crown</h3>
-          <p class="text-gray-600">Jacey bedford</p>
-          <p class="text-sm text-gray-500">Amber begins with the death</p>
-        </div>
-      </div> -->
+      
 
     </div>
   </main>
   <!-- Modal Overlay -->
+<!-- Modal Overlay -->
 <div id="bookModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
-  <div class="bg-[#7C2D2D] text-white p-6 rounded-lg max-w-3xl w-full flex flex-col md:flex-row gap-6 relative">
-    <button onclick="closeModal()" class="absolute top-2 right-4 text-white text-2xl font-bold hover:text-gray-300">&times;</button>
+  <div class="bg-gray-50 text-black p-6 rounded-lg max-w-3xl w-full flex flex-col md:flex-row gap-6 relative">
+    <!-- Close Button -->
+    <button onclick="closeModal()" class="absolute top-2 right-4 text-black text-2xl font-bold hover:text-black">&times;</button>
 
+    <!-- Book Image -->
     <img id="modalBookImage" src="" alt="Book Cover" class="w-60 h-80 object-cover rounded">
 
     <div class="flex flex-col">
@@ -323,8 +89,8 @@
       <p id="modalBookDescription" class="mt-4 text-sm">Book Description</p>
 
       <div class="mt-4 flex items-center gap-4">
-        <button id="buyButton" class="bg-white text-[#7C2D2D] font-semibold px-4 py-2 rounded hover:bg-gray-200">Buy ($10.12)</button>
-        <a id="readMoreButton" href="#" class="text-white underline hover:text-gray-300">Read more...</a>
+        <button id="buyButton" class="bg-[#803030] text-white font-semibold px-4 py-2 rounded hover:bg-gray-200">Buy ($10.12)</button>
+        <a id="readMoreButton" href="#" class="text-black underline hover:text-[#803030]">Read more...</a>
       </div>
     </div>
   </div>
@@ -455,6 +221,12 @@
                         <img src="../images/facebook.png" alt="">
 
                     </div>
+                    <div class="p-16 bg-[#803030]">
+                        
+                    </div>
+                    <div>
+                        <img src="../images/ISTAD.png" alt="">
+                    </div>
                 </div>
 
             </div>
@@ -478,7 +250,7 @@
     </footer>
     
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    
 <style>
       .enhanced-logo-container {
         position: relative;
@@ -560,7 +332,9 @@
     // Fetch and display the books when the page loads
     fetchBooks();
   </script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script> -->
+  
+<script src="../js/modal.js"></script>
+<script src="../js/fetchBooks.js"></script>
 </body>
 
 </html>

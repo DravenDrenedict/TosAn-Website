@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="icon" href="images/TOSANLOGO.png" sizes="128x128" type="image/png">
+    <link rel="stylesheet" href="../output.css">
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #803030 0%, 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #803030;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .search-container {
+            position: relative;
+        }
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-[#803030] text-white p-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+              <a href="../index.html">
+                <button class="text-white hover:text-white/80 transition-colors flex items-center">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-6 h-6 mr-2" fill="currentColor">
+                      <path
+                        d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z" />
+                    </svg>
+                  </span>
+                  <span>Back</span>
+                </button>
+              </a>
+        </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container flex-1 max-w-md mx-8">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search for books..." 
+                        class="w-full px-4 py-2 pr-12 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white border-white"
+                    >
+                    <button onclick="searchBooks()" class="absolute right-3 top-2.5 text-white hover:text-white">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="searchResults" class="search-results hidden"></div>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleFavorites()" class="flex items-center space-x-2 hover:bg-[#4d1d1d] px-3 py-2 rounded">
+                    <i class="fas fa-heart"></i>
+                    <span>Favorites (<span id="favCount">0</span>)</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- <section class="hero-gradient text-white py-20" data-aos="fade-in">
+        <div class="container mx-auto text-center px-4">
+            <h1 class="text-5xl font-bold mb-6" data-aos="fade-up" data-aos-delay="100">
+                Discover Amazing Books
+            </h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                Explore thousands of IT and programming books from our comprehensive digital library
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+                <button onclick="loadNewBooks()" class="bg-white text-[#803030] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                    Browse New Books
+                </button>
+                <button onclick="scrollToCategories()" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[#803030] transition duration-300">
+                    View Categories
+                </button>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 rounded-lg text-center">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <p class="text-gray-700">Loading books...</p>
+        </div>
+    </div>
+
+    <!-- Featured Books Section -->
+     
+      <div class="text-center mb-12 bg-white m-3 py-10" data-aos="fade-up" >
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Categories</h2>
+                <p class="text-gray-600 text-lg">Discover the latest and most popular programming books</p>
+      </div>
+    <section id="featuredBooks" class=" bg-white">
+        <div class="container mx-auto px-4">
+            <!-- <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Categories</h2>
+                <p class="text-gray-600 text-lg">Discover the latest and most popular programming books</p>
+            </div> -->
+           
+            
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="100">
+                <button onclick="loadNewBooks()" class="filter-btn active bg-[#803030] text-white px-6 py-2 rounded-full hover:bg-[#4d1d1d] transition duration-300">
+                    All Book
+                </button>
+                <button onclick="searchByQuery('python')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-[#803030] hover:text-white transition duration-300">
+                    Python
+                </button>
+                <button onclick="searchByQuery('javascript')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-[#803030] hover:text-white transition duration-300">
+                    JavaScript
+                </button>
+                <button onclick="searchByQuery('react')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-[#803030] hover:text-white transition duration-300">
+                    React
+                </button>
+                <button onclick="searchByQuery('machine learning')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-[#803030] hover:text-white transition duration-300">
+                    AI/ML
+                </button>
+            </div>
+
+            <!-- Books Grid -->
+            <div id="booksGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 py-10">
+                <!-- Books will be loaded here -->
+            </div>
+
+            <!-- Load More Button -->
+            <!-- <div class="text-center mt-12 py-16">
+                <button id="loadMoreBtn" onclick="loadMoreBooks()" class="bg-[#803030] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#4d1d1d] transition duration-300 hidden">
+                    Load More Books
+                </button>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Categories Quick Access -->
+    <!-- <section id="categories" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Popular Categories</h2>
+                <p class="text-gray-600 text-lg">Find books by your favorite topics</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="200">
+                <div onclick="searchByQuery('web development')" class="category-card bg-white p-6 rounded-xl text-center cursor-pointer card-hover">
+                    <i class="fas fa-code text-4xl text-[#803030] mb-4"></i>
+                    <h3 class="font-semibold text-gray-800">Web Development</h3>
+                </div>
+                <div onclick="searchByQuery('data science')" class="category-card bg-white p-6 rounded-xl text-center cursor-pointer card-hover">
+                    <i class="fas fa-chart-line text-4xl text-[#803030] mb-4"></i>
+                    <h3 class="font-semibold text-gray-800">Data Science</h3>
+                </div>
+                <div onclick="searchByQuery('mobile development')" class="category-card bg-white p-6 rounded-xl text-center cursor-pointer card-hover">
+                    <i class="fas fa-mobile-alt text-4xl text-[#803030] mb-4"></i>
+                    <h3 class="font-semibold text-gray-800">Mobile Development</h3>
+                </div>
+                <div onclick="searchByQuery('cybersecurity')" class="category-card bg-white p-6 rounded-xl text-center cursor-pointer card-hover">
+                    <i class="fas fa-shield-alt text-4xl text-[#803030] mb-4"></i>
+                    <h3 class="font-semibold text-gray-800">Cybersecurity</h3>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-[#803030] text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-4xl font-bold mb-2">1000+</h3>
+                    <p class="text-xl">Books Available</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-4xl font-bold mb-2">50+</h3>
+                    <p class="text-xl">Programming Topics</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-4xl font-bold mb-2">24/7</h3>
+                    <p class="text-xl">Access Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as your existing footer) -->
+    <footer class="text-white" style="background-color: #803030;">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                
+                <!-- Enhanced Logo Section -->
+                <div class="lg:col-span-1 flex flex-col items-center lg:items-start justify-center">
+                    <div class="enhanced-logo-container">
+                        <img src="../images/TOSANLOGO.png" alt="TOSAN Logo" class="enhanced-logo">
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">EXPLORE</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Admission</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Short Course</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Scholarship</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">News & Events</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Learning Portal</a></li>
+                        <li><a href="#" class="text-gray-200 hover:text-white transition-colors">Apply Now</a></li>
+                    </ul>
+                </div>
+
+                <!-- Address and Contacts -->
+                <div class="lg:col-span-1">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">ADDRESS</h3>
+                        <p class="text-gray-200 leading-relaxed">
+                            No. 24, Street 562, Sangkat Boeung<br>
+                            Kak I, Khan Toul Kork, Phnom Penh,<br>
+                            Cambodia
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-white">CONTACTS</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-gray-300 mr-3"></i>
+                                <a href="mailto:info.istad@gmail.com" class="text-gray-200 hover:text-white">info.istad@gmail.com</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 95-990-910</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-gray-300 mr-3"></i>
+                                <span class="text-gray-200">(+855) 93-990-910</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                                <i class="fab fa-youtube text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <i class="fab fa-telegram text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors">
+                                <i class="fab fa-tiktok text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni and App Section -->
+                <div class="lg:col-span-1">
+                    <!-- Visit Alumni Site -->
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-user-graduate text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">VISIT ALUMNI SITE</h3>
+                                <a href="#" class="text-gray-200 hover:text-white">Alumni Application</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CSTAD APP -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-white">CSTAD APP</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-apple text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">Download on the</p>
+                                        <p class="text-white font-semibold">App Store</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="bg-black rounded-lg px-4 py-2 flex items-center space-x-3">
+                                    <i class="fab fa-google-play text-white text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-gray-300">GET IT ON</p>
+                                        <p class="text-white font-semibold">Google Play</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Follow Us Section -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-xl font-bold mb-6 text-white">Follow Us</h3>
+                    <div class="bg-white rounded-lg p-2 h-32">
+                        <img src="../images/facebook.png" alt="">
+
+                    </div>
+                    <div class="p-16 bg-[#803030]">
+                        
+                    </div>
+                    <div>
+                        <img src="../images/ISTAD.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-red-400 border-opacity-30">
+            <div class="max-w-7xl mx-auto px-6 py-6">
+                <p class="text-center text-gray-200">
+                    © 2024 Center of Science and Technology Advanced Development | All Rights Reserved
+                </p>
+            </div>
+        </div>
+
+        <!-- Floating Chat Button -->
+        <div class="fixed bottom-6 right-6">
+            <button class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition-colors">
+                <i class="fas fa-comments text-white text-xl"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Enhanced Logo Styles -->
+    <style>
+        .enhanced-logo-container {
+            position: relative;
+            display: inline-block;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .enhanced-logo-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,255,255,0.2);
+        }
+        .enhanced-logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .filter-btn.active {
+            background-color: #803030 !important;
+            color: white !important;
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>

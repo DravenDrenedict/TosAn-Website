@@ -1,0 +1,37 @@
+<!-- favorites.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Books</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../output.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/TOSANLOGO.png" sizes="128x128" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation -->
+    <nav class="bg-[#803030] p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-white">
+            <a href="../index.html"><i class="fas fa-arrow-left mr-2 text-white"></i>Back</a>
+            <h2 class="">Favorites</h2>
+            <a href="../html/favorites.html" class="text-white text-xl"></a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-semibold text-center text-[#803030] mb-6">Your Favorite Books</h1>
+
+        <!-- Favorite Books Section -->
+        <section id="favorite-books" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Books will be dynamically injected here -->
+        </section>
+    </div>
+
+    <script src="../js/favorites.js"></script>
+</body>
+</html>
