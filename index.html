@@ -40,6 +40,36 @@
         }
     </script>
     <style>
+        /* Styling for the View Details Button */
+.view-details-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;  /* Smaller size */
+    background-color: rgba(227, 220, 220, 0.6);  /* Semi-transparent grey background */
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;  /* Rounded corners */
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 12px;  /* Smaller text */
+    text-align: center;
+    box-shadow: none;
+}
+
+/* Hover Effect */
+.view-details-btn:hover {
+    background-color: rgba(221, 211, 211, 0.8);  /* Darker grey on hover */
+    transform: translateX(-50%) scale(1.1);  /* Slightly grow on hover */
+    box-shadow: 0 4px 10px rgba(137, 135, 135, 0.2);  /* Adding a subtle shadow on hover */
+}
+
+/* On hover for the card, the button becomes visible */
+.group:hover .view-details-btn {
+    opacity: 1;
+}
+
         * {
             font-family: "poppins";
         }
@@ -106,6 +136,7 @@
             }
         }
     </style>
+    
   </head>
   <body class="m-0 p-0 overflow-x-hidden">
     <!-- Navigation -->
@@ -118,7 +149,7 @@
         </div>
 
         <!-- Navbar Links -->
-        <div class="hidden md:flex space-x-8">
+        <div class="hidden md:flex space-x-5">
             <a href="index.html" class="text-white hover:text-gray-300 transition duration-300">Home</a>
             <a href="html/about.html" class="text-white hover:text-gray-300 transition duration-300">About</a>
             <a href="html/catepage.html" class="text-white hover:text-gray-300 transition duration-300">Categories</a>
@@ -127,10 +158,11 @@
         </div>
 
         <!-- Favorite Button with Heart Icon -->
-            <a href="../html/favorites.html" class="text-white">
-                    <i class="fas fa-heart"></i>
-                    <span>Favorites</span>
-                </a>
+<a href="../html/favorites.html" class="hidden md:flex items-center text-white space-x-2">
+    <i class="fas fa-heart"></i>
+    <span>Favorites</span>
+</a>
+
 
         <!-- Hamburger Menu for Mobile -->
         <div class="md:hidden flex items-center">
@@ -245,22 +277,48 @@
         </div>
     </header>
  <!-- Section for displaying search results -->
-  <section id="book" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-6">
-    <!-- Books will be dynamically rendered here -->
-  </section>
-    <!-- Next Section (Example) -->
-     <!-- Swiper Container -->
+  <!-- Swiper Container -->
 <div class="py-20 bg-[#FFFFF]" data-aos="fade-up" data-aos-delay="100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Swiper -->
         <div class="swiper bookSwiper">
+            <!-- Swiper Wrapper -->
             <div class="swiper-wrapper" id="swiper-wrapper">
-                <!-- Dynamic swiper-slide will be injected here -->
+                <!-- Dynamic swiper-slide will be injected here by JS -->
             </div>
+            
+            <!-- Navigation buttons -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
     </div>
 </div>
+
+<!-- Modal for Book Details -->
+<div id="bookModal" class="fixed inset-0 hidden bg-black bg-opacity-50 z-50 justify-center items-center flex">
+    <div class="bg-white rounded-lg w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 p-6 relative shadow-lg">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-600 hover:text-red-600">
+            <i class="fas fa-times"></i> <!-- "X" icon for closing -->
+        </button>
+
+        <!-- Book Details Content -->
+        <div class="flex flex-col items-center">
+            <img id="modalBookImage" src="" alt="Book Cover" class="w-48 h-72 object-cover mb-4 shadow-lg rounded-lg">
+            <h2 id="modalBookTitle" class="text-2xl font-semibold mb-2 text-gray-800"></h2>
+            <p id="modalBookAuthors" class="text-gray-600 mb-2"></p>
+            <p id="modalBookPublisher" class="text-gray-600 mb-2"></p>
+            <p id="modalBookYear" class="text-gray-600 mb-2"></p>
+            <p id="modalBookPages" class="text-gray-600 mb-2"></p>
+            <p id="modalBookDescription" class="text-gray-800 mb-4 text-sm"></p>
+
+            <div class="flex gap-4">
+                <a id="readMoreButton" href="" class="text-white bg-[#803030] px-4 py-2 rounded-lg hover:bg-red-600">Read More</a>
+                <button id="buyButton" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Buy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
  <!-- Book Carousel -->
     <!-- <div class="py-20 bg-[#FFFFF]" data-aos="fade-up" data-aos-delay="100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -334,7 +392,7 @@
     <!-- Category Cards -->
      <div id="swipe-book"></div>
     <!-- Modal for Book Details -->
-<div id="bookModal" class="fixed inset-0 hidden bg-black bg-opacity-50 z-50 justify-center items-center flex">
+<div id="bookModal" class="fixed inset-0 hidden bg-black bg-opacity-50 z-50 justify-center items-center">
     <div class="bg-white rounded-lg w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 p-6 relative">
         <!-- Close Button -->
         <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-600 hover:text-red-600">
@@ -362,116 +420,38 @@
 
 
  
+<!-- this week card  -->
 
-    <!-- This Week Section -->
-    <!-- <div class="py-12 bg-[#FFFFF]">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 ml-28">This week</h2>
+    <div id="weekly-books-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="flip-left">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8">This week</h2>
+    <!-- Modal for Book Details -->
+<div id="bookModal" class="fixed inset-0 hidden bg-black bg-opacity-50 z-50 justify-center items-center flex">
+    <div class="bg-white rounded-lg w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 p-6 relative shadow-lg items-center">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-600 hover:text-red-600">
+            <i class="fas fa-times"></i> <!-- "X" icon for closing -->
+        </button>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-                <div class="weekly-card group cursor-pointer mx-auto">
-                    <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
-                        <img src="../images/2.png" alt="The Elf Tangent"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        <button
-                            class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <svg class="h-3 w-3 text-gray-700 hover:text-red-500" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-gray-900 mb-1 text-sm">The Elf Tangent</h3>
-                    <p class="text-xs text-gray-600">As a princess she recommends</p>
-                </div>
+        <!-- Book Details Content -->
+        <div class="flex flex-col items-center justify-center">
+            <img id="modalBookImage" src="" alt="Book Cover" class="w-48 h-72 object-cover mb-4 shadow-lg rounded-lg">
+            <h2 id="modalBookTitle" class="text-2xl font-semibold mb-2 text-gray-800"></h2>
+            <p id="modalBookAuthors" class="text-gray-600 mb-2"></p>
+            <p id="modalBookPublisher" class="text-gray-600 mb-2"></p>
+            <p id="modalBookYear" class="text-gray-600 mb-2"></p>
+            <p id="modalBookPages" class="text-gray-600 mb-2"></p>
+            <p id="modalBookDescription" class="text-gray-800 mb-4 text-sm"></p>
 
-                <div class="weekly-card group cursor-pointer mx-auto" data-aos="flip-left">
-                    <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
-                        <img src="../images/3.png" alt="Reign of Star"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        <button
-                            class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <svg class="h-3 w-3 text-gray-700 hover:text-red-500" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-gray-900 mb-1 text-sm">Reign of Star</h3>
-                    <p class="text-xs text-gray-600">With darkness spreading across this</p>
-                </div>
-
-                <div class="weekly-card group cursor-pointer mx-auto" data-aos="flip-left">
-                    <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
-                        <img src="../images/4.png" alt="Legend Bear"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        <button
-                            class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <svg class="h-3 w-3 text-gray-700 hover:text-red-500" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-gray-900 mb-1 text-sm">Legend Bear</h3>
-                    <p class="text-xs text-gray-600">The King Of How to Arctic legend</p>
-                </div>
-
-                <div class="weekly-card group cursor-pointer mx-auto" data-aos="flip-left">
-                    <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
-                        <img src="../images/5.png" alt="Creature"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        <button
-                            class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <svg class="h-3 w-3 text-gray-700 hover:text-red-500" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-gray-900 mb-1 text-sm">Creature</h3>
-                    <p class="text-xs text-gray-600">Magnificent Book of Creatures</p>
-                </div>
-
-                <div class="weekly-card group cursor-pointer mx-auto" data-aos="flip-left">
-                    <div class="relative aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg mb-3">
-                        <img src="../images/8.png" alt="Bound Inked"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        <button
-                            class="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <svg class="h-3 w-3 text-gray-700 hover:text-red-500" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                </path>
-                            </svg>
-                        </button>
-                    </div>
-                    <h3 class="font-semibold text-gray-900 mb-1 text-sm">Bound Inked</h3>
-                    <p class="text-xs text-gray-600">The fourth Age Thorn Saga</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-     <!-- This Week Section -->
-    <div class="py-12 bg-[#FFFFF]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8">This week</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6" id="weekly-books-container">
-                <!-- Books will be dynamically inserted here -->
+            <div class="flex gap-4">
+                <a id="readMoreButton" href="" class="text-white bg-[#803030] px-4 py-2 rounded-lg hover:bg-red-600">Read More</a>
+                <button id="buyButton" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Buy</button>
             </div>
         </div>
     </div>
+</div>
+
+
+
 
     <!-- Promo Banner -->
     <div class="py-12 bg-[#803030]" data-aos="zoom-out">
@@ -800,7 +780,7 @@
     
     <div id="root"></div>
     
-<style>
+    <style>
       .enhanced-logo-container {
         position: relative;
         display: inline-block;
@@ -927,6 +907,9 @@
 <!-- Link to fetchBooksForSwiper.js -->
 <script type="module" src="/js/fetchBooksForSwiper.js"></script>
 <script type="module" src="/js/fetchBookThisWeek.js"></script>
+<script src="js/fav.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/fetchBooks.js"></script>
 
 <!-- Add Swiper JS initialization -->
 <script type="module">
@@ -934,12 +917,8 @@
     fetchBooksForSwiper();  // Initialize Swiper with fetched books
 </script>
 
-<!-- <script src="js/book-detail.js"></script> -->
-<!-- <script src="js/main.js"></script> -->
-<script src="js/fav.js"></script>
-<script src="js/modal.js"></script>
-<script src="js/fetchBooks.js"></script>
-<div id="bookModal" class="fixed inset-0 hidden bg-black bg-opacity-50 z-50 justify-center items-center flex">
+
+<div id="bookModal" class="fixed inset-0 hidden bg-black bg-opacity-50 z-50 justify-center items-center">
     <!-- Modal content goes here, as provided earlier -->
 </div>
 </body>
